@@ -4,17 +4,22 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
+// данные плагины нужны для минификации кода js и css
 const TerserWebPackPlugin = require('terser-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
+/* Чтобы переменная isDev корректно работала при переключении режимов, 
+необходимо либо сдлелать module.exports функцией (https://webpack.js.org/configuration/mode/), 
+либо установить cross-env -D и добавить параметры в script в package.json ( cross-env NODE_ENV=...) для каждого скрипта. 
+Также надо добавить проверку на isDev в devServer */
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 
-
+// функция для блока " optimization: "
 const optimization = () => {
-
+    /* splitChunks чтобы не дублировать библиотеки, если мы будем 
+    одну и ту же подключать к разным файлам */
     const config = {
         splitChunks: {
             chunks: 'all'
@@ -31,7 +36,7 @@ const optimization = () => {
     return config;
 };
 
-
+// функция для создание имен с хешем только для Prod режима
 const filename = extension => isDev 
     ? `[name].${extension}`
     : `[name].[contenthash].${extension}`;
@@ -53,7 +58,8 @@ const cssLoaders = loader => {
 }
 
 module.exports = {
-
+    // context - можно не указывать папку src далее в main и template
+    target: 'web',
     context: path.resolve(__dirname, 'src'), 
     mode: 'development',
 
@@ -67,7 +73,8 @@ module.exports = {
     },
 
     resolve: {
-
+        /* расширения, которые webpack должен понимать по умолчанию, чтобы
+        не писать расширения файлов, которые укажем в массиве */
         extensions: ['.js', '.json'],
         alias: {
             '@modules': path.resolve(__dirname, 'src/modules'),
@@ -77,11 +84,15 @@ module.exports = {
 
     optimization: optimization(),
 
+    // для того, чтобы можно было видеть исходный код в консоли разработчика
+    devtool: isDev ? 'source-map' : false,
 
-    devtool: isDev ? 'source-map' : '',
-
+    /* для webpack-dev-server надо создать отдельный скрипт в package.json: 
+    "start": "webpack serve --mode development --open"
+    dist во время работы будет пустой, все файлы будут в оперативке */
     devServer : {
         port: 4200,
+        // hot: isDev
     },
 
     plugins: [
@@ -92,6 +103,7 @@ module.exports = {
 
         new CleanWebpackPlugin(),
 
+        // copy нужен для переноса статических файлов в dist,в т.ч. favicon
         new CopyPlugin({
             patterns: [
                 {
@@ -101,23 +113,48 @@ module.exports = {
             ]
         }),
 
+        /* чтобы стили отражались не в head, а отдельным файлом
+        параметры копируем из output, изменив расширение на css */
         new MiniCssExtractPlugin({
             filename: filename('css')
         })
     ],
 
+    /* лоадеры нужны для работы с другими типами файлов
+    webpack идет спрва налево, сначала будет css-loader, 
+    а потом style-loader добавит стили в head в html 
+    Код для css, sass и less внутри массива дублируется, поэтому можно создать функцию
+    Для babel также надо установить preset-env и добавить not dead в package.json и установить полифилл и подключить его в entry. Также можно добавить плагин proposal*/
+
     module: {
         rules: [
             {
                 test: /\.css$/,
+                // use: [ чтобы не дублировать, используем фукнцию
+                //     {
+                //         loader: MiniCssExtractPlugin.loader,
+                //         options: {},
+                //     },
+                //     'css-loader'
+                // ]
                 use: cssLoaders()
             },
             {
                 test: /\.s[ac]ss$/i,
+                // use: [
+                //     MiniCssExtractPlugin.loader,
+                //     'css-loader',
+                //     'sass-loader',
+                // ],
                 use: cssLoaders('sass-loader')
             },
             {
                 test: /\.less$/i,
+                // use: [
+                //     MiniCssExtractPlugin.loader,
+                //     'css-loader',
+                //     'less-loader',
+                // ],
                 use: cssLoaders('less-loader')
             },
             {
@@ -130,7 +167,7 @@ module.exports = {
                     }
                 }
             },
-            {   
+            {   //file-loader работает в т.ч. со шрифтами 
                 test: /\.(png|jpe?g|svg|gif|ico|ttf|woff|woff2|eot)$/,
                 use: ['file-loader']
             },
