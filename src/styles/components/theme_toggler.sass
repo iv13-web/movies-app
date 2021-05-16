@@ -4,6 +4,10 @@
   border: 2px solid $border-color
   border-radius: 2.4rem
   position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: all .3s ease
 
   &_active 
     background-color: #444
@@ -19,23 +23,20 @@
 
 
   &__sun
-    position: absolute
-    right: 4px
-    top: 4px
-    height: 1.4rem
-    width: 1.4rem
+    position: relative
+    height: 1.6rem
+    width: 1.6rem
     background-color: #ffcf11
     border-radius: 50%
     z-index: 2
     transition: all .3s ease
+    order: 2
 
   &__moon
-    position: absolute
-    left: 4px
-    top: 4px
-    height: 1.4rem
-    width: 1.4rem
+    position: relative
+    height: 1.6rem
+    width: 1.6rem
     background-color: #ffffff
     border-radius: 50%
     opacity: 0
-    transition: all .6s ease
+    transition: all .3s ease
