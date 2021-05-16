@@ -11,3 +11,7 @@ export class LogSomeData {
         });
     }
 }
+
+document.querySelector('.toggler').addEventListener('click', () => {
+    document.querySelector('.toggler').classList.toggle('toggler_active');
+})

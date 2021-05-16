@@ -1,0 +1,41 @@
+.toggler
+  width: 4rem
+  height: 2.4rem
+  border: 2px solid $border-color
+  border-radius: 2.4rem
+  position: relative
+
+  &_active 
+    background-color: #444
+    border: 2px solid #696969
+
+    .toggler
+      &__sun
+        transform: translateX(-10px)
+        background-color: #444
+        
+      &__moon
+        opacity: 1
+
+
+  &__sun
+    position: absolute
+    right: 4px
+    top: 4px
+    height: 1.4rem
+    width: 1.4rem
+    background-color: #ffcf11
+    border-radius: 50%
+    z-index: 2
+    transition: all .3s ease
+
+  &__moon
+    position: absolute
+    left: 4px
+    top: 4px
+    height: 1.4rem
+    width: 1.4rem
+    background-color: #ffffff
+    border-radius: 50%
+    opacity: 0
+    transition: all .6s ease

@@ -1,0 +1,52 @@
+.page-header 
+  background-color: #f8f8f8
+  min-height: 40px
+  .container
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+
+.burger
+  align-items: center
+  position: relative
+  width: 3.2rem
+  height: 3.2rem
+  transition: all .3s ease
+
+  &:before,
+  &:after
+    background-color: #000
+    content: ''
+    height: 2px
+    position: absolute
+    top: 10px
+    transition: all .3s ease
+    width: 3.2rem
+  &:after
+    top: 18px
+  &_active
+    transform: translate(8px, -4px)
+    &:before
+      transform: rotate(45deg) translateY(6px)
+      width: 2.4rem
+    &:after
+      transform: rotate(-45deg) translateY(-6px)
+      width: 2.4rem
+
+
+
+.nav-wrapper
+  overflow: hidden
+
+
+.nav
+  display: flex
+  overflow-x: scroll
+  padding: 1.6rem
+  -webkit-overflow-scrolling: touch
+
+  .nav__link
+    flex-shrink: 0
+    padding-right: 1.2rem
+

@@ -1,6 +1,5 @@
 import {LogSomeData} from '@modules/test';
-import './styles/font_roboto.css';
-import './styles/style.scss';
+import './styles/index.sass';
 
 // import './assets/classification.jpg';
 
