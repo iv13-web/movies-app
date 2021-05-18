@@ -1,13 +1,36 @@
-import {LogSomeData} from '@modules/test';
+// import {Component} from './core/component';
 import './styles/index.sass';
 
-// import './assets/classification.jpg';
+import {WelcomeComponent} from './components/welcome_component';
+import {ThemeComponent} from './components/theme_component';
 
-const someData = new LogSomeData('Future movie app')
-console.log(someData);
+import {NavComponent} from './components/nav_component';
+import {FilmsComponent} from './components/films_component';
+import {SeriesComponent} from './components/series_component';
+import {Top250Component} from './components/top250_component';
+import {NewsComponent} from './components/news_component';
+import {ScheduleComponent} from './components/schedule_component';
+import {AboutComponent} from './components/about_component';
 
-async function a () {
-    return await Promise.resolve('working')
-}
-a().then(console.log);
 
+new WelcomeComponent('welcome');
+new ThemeComponent('theme-toggler');
+
+const nav = new NavComponent('nav');
+const films = new FilmsComponent('films');
+const series = new SeriesComponent('series');
+const top250 = new Top250Component('top-250');
+const news = new NewsComponent('news');
+const schedule = new ScheduleComponent('schedule');
+const about = new AboutComponent('about');
+
+
+// передаю в nav_component в массиве, чтобы применить forEach
+nav.transferTabs([
+    {dataAttribute: 'films', Component: films},
+    {dataAttribute: 'series', Component: series},
+    {dataAttribute: 'top250', Component: top250},
+    {dataAttribute: 'news', Component: news},
+    {dataAttribute: 'schedule', Component: schedule},
+    {dataAttribute: 'about', Component: about},
+])

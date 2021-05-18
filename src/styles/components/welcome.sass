@@ -1,0 +1,39 @@
+.welcome
+  +overlay
+  +flex-center
+  background-color: #fff
+
+  &__text
+    position: absolute
+    color: $main
+    width: 30rem
+    height: 20rem
+    text-align: center
+  &__camera
+    +absolute-middle-position
+    bottom: 65%
+  &__button
+    +absolute-middle-position
+    +transition-all
+    cursor: pointer
+    top: auto
+    bottom: 10%
+    background: darken($main-light, 3%)
+    border-radius: 5px
+    height: 45px
+    padding: 0 30px
+    color: $main
+    border: 0
+    &:hover 
+      background: darken($main-light, 7%)
+    &:active 
+      background: darken($main-light, 7%)
+
+
+#camera-body,
+#reel-1,
+#reel-2 
+  fill: #000
+
+
+
