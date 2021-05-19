@@ -12,14 +12,14 @@ export class NavComponent extends Component {
     }
 
 
-    transferTabs(tabs) {
+    selectTabs(tabs) {
         // прокинул из index.js, чтобы получить доступ к компонентам
         this.tabs = tabs;
 
         if (this.getFromlocalStorage('lastSelected')) {
 
-            setActiveComponentAfterReload.bind(this)();
             setActiveTabAfterReload.bind(this)();
+            setActiveComponentAfterReload.bind(this)();
         }
     }
 }
@@ -56,7 +56,7 @@ function setActiveTabAfterReload() {
 }
 
 function setActiveComponentAfterReload() {
-    
+
     this.tabs.forEach( tab => tab.Component.hide());
     let activeTab = this.tabs.find(tab => tab.dataAttribute === this.getFromlocalStorage('lastSelected'));
     activeTab = activeTab.Component.$element;

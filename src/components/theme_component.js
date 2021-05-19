@@ -16,14 +16,14 @@ function themeHandler() {
     this.$element.classList.toggle('toggler_active');
     document.body.classList.toggle('dark-theme');
 
-    this.getFromlocalStorage('theme') === 'dark' 
-      ? this.savelocalStorage('theme', 'light')  
-      : this.savelocalStorage('theme', 'dark');
+    this.getFromlocalStorage('themePrefered') === 'dark' 
+      ? this.savelocalStorage('themePrefered', 'light')  
+      : this.savelocalStorage('themePrefered', 'dark');
 }
 
 function setThemeAfterReload() {
 
-    if (this.getFromlocalStorage('theme') === 'dark' ) {
+    if (this.getFromlocalStorage('themePrefered') === 'dark' ) {
         this.$element.classList.add('toggler_active');
         document.body.classList.add('dark-theme');
     }

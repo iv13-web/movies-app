@@ -26,7 +26,7 @@ const about = new AboutComponent('about');
 
 
 // передаю в nav_component в массиве, чтобы применить forEach
-nav.transferTabs([
+nav.selectTabs([
     {dataAttribute: 'films', Component: films},
     {dataAttribute: 'series', Component: series},
     {dataAttribute: 'top250', Component: top250},
