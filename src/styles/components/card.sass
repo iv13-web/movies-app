@@ -1,0 +1,88 @@
+.card
+  position: relative
+  padding: 1.6rem 0 
+  display: flex
+  color: #000
+  
+  &:after
+    +pseudo
+    left: -1.6rem
+    bottom: 0
+    height: 1px
+    width: calc(100% + 3.2rem)
+    background-color: $border-color
+
+  &__poster
+    flex-shrink: 0
+    height: 96px
+    display: inline-block
+    position: relative 
+    margin-right: 1.2rem
+
+    img 
+      height: 96px
+
+  &__rating
+    position: absolute
+    top: 4px
+    left: -8px
+    background-color: #257d01
+    color: #fff
+    font-size: 1rem
+    font-weight: 600
+    padding: 4px
+    border-radius: 2px
+    z-index: 2
+    letter-spacing: .1em
+
+  &__body
+    display: flex
+    flex-shrink: 0
+    flex-direction: column
+    justify-content: space-between
+
+  &__title
+    font-size: 1.6rem
+    font-weight: 500
+    color: #000
+
+  &__original-title,
+  &__date
+    font-size: 1.2rem
+    color: #333
+    margin-bottom: 2px
+  
+  &__bottom-button
+    color: #fff
+    padding: 4px 0
+    font-size: 1.2rem
+    border-radius: 4px
+    text-align: center
+    font-weight: 600
+    background: linear-gradient(to left, #2cb530, #4d95ef)
+
+  &__additional
+    font-size: 1.2rem
+    color: #777
+  
+  &__save-buttons
+    width: 100%
+    justify-content: flex-end
+    display: flex
+
+    .bookmark
+      margin-right: 1.2rem
+      cursor: pointer
+    .seen
+      cursor: pointer
+    .additions
+      align-self: flex-end
+      position: absolute
+      margin-right: 2px
+      cursor: pointer
+
+
+
+
+
+    

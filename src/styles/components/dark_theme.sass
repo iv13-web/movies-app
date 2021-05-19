@@ -10,11 +10,51 @@
     color: #bbb
 
   .page-header
-    background-color: #828082
+    background-color: #444
   
   .nav__link_active
     color: #b790dc
   
+  .burger
+    &:before,
+    &:after 
+      background-color: #fff
+
+  .card
+    &:after
+      background-color: #444
+
+    &__poster,
+    &__rating
+      &:after 
+        +pseudo
+        width: 100%
+        height: 100%
+        top: 0
+        left: 0
+        background-color: rgba(0,0,0,.2)
+
+    &__title
+      color: #ddd
+    &__original-title,
+    &__date,
+    &__additional
+      color: #9b9b9b
+    &__bottom-button
+      background: #b790dc73
+    &__save-buttons
+      width: 100%
+      justify-content: flex-end
+      display: flex
+
+      .bookmark,
+      .seen,
+      .additions
+        path
+          fill: #ddd
+
+  
+
   
   
   
