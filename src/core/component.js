@@ -9,12 +9,20 @@ export class Component {
     init() {
     } 
 
+    onShow() {
+    }
+
+    onHide() {   
+    }
+
     hide() {
         this.$element.classList.add('hidden');
+        this.onHide();
     }
 
     show() {
         this.$element.classList.remove('hidden');
+        this.onShow();
     }
 
     listen(eventType, callback) {

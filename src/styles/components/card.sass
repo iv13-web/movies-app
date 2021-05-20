@@ -34,23 +34,32 @@
     border-radius: 2px
     z-index: 2
     letter-spacing: .1em
+    width: 2.6rem
+    overflow: hidden
 
   &__body
     display: flex
     flex-shrink: 0
     flex-direction: column
     justify-content: space-between
+    max-width: 20rem
+
 
   &__title
     font-size: 1.6rem
     font-weight: 500
     color: #000
+    max-width: 18rem
+    margin-bottom: 4px
 
-  &__original-title,
+  &__original-title
+    font-size: 1rem
+    color: #333
+    margin-bottom: 4px
   &__date
     font-size: 1.2rem
     color: #333
-    margin-bottom: 2px
+    margin-bottom: 4px
   
   &__bottom-button
     color: #fff
@@ -60,10 +69,13 @@
     text-align: center
     font-weight: 600
     background: linear-gradient(to left, #2cb530, #4d95ef)
+    width: 18rem
 
   &__additional
     font-size: 1.2rem
     color: #777
+    margin-bottom: 4px
+
   
   &__save-buttons
     width: 100%
