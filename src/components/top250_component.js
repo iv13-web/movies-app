@@ -6,7 +6,7 @@ import {transformFbService} from '../services/transform_fb.service';
 
 
 export class Top250Component extends Component {
-    constructor(id, {loader}) {
+    constructor(id, loader) {
         super (id);
         this.loader = loader;
     }
@@ -26,20 +26,34 @@ export class Top250Component extends Component {
     }
 
     async onShow() {
-
+        this.loader.show();
+        
         const fbData = await fbApiService.fetchCard('/top250.json');
-        const top250Movies = await transformFbService.fbObjectToArray(fbData);
+        const top250Movies = transformFbService.fbObjectToArray(fbData);
+
+
+
 
 
         // console.log(top250Movies[16].error = true);
         top250Movies.forEach(movie => {
-            console.log(typeof movie.rating_kinopoisk)
-        })
+            console.log(typeof movie.rating_kinopoisk);
+        });
+
+
+
         
         const html = top250Movies.map(movie => renderCard(movie));
         const $container = this.$element.querySelector('.container');
+        this.loader.hide();
+
+        // join, чтобы не было запятых в разметке после html.map()
         $container.insertAdjacentHTML('beforeend', html.join(' '));
 
+    }
+
+    onHide() {
+        this.$element.querySelector('.container').innerHTML = '';
     }
 }
 
@@ -48,11 +62,11 @@ function renderCard(movie) {
     if (!movie.error) {
 
         const genres = Array.isArray(movie.genres) 
-        ? `${movie.genres[0]}`
-        : `драма`;
+            ? `${movie.genres[0]}`
+            : `драма`;
 
         const country = Array.isArray(movie.countries)
-            && `${movie.countries[0]}`
+            && `${movie.countries[0]}`;
 
         // const rating = typeof movie.rating_kinopoisk 
         

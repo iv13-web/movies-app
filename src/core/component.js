@@ -10,6 +10,7 @@ export class Component {
     } 
 
     onShow() {
+
     }
 
     onHide() {   
@@ -44,4 +45,5 @@ export class Component {
     log() {
         console.log(this);
     }
+
 }
