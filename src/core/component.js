@@ -38,7 +38,11 @@ export class Component {
         return JSON.parse(localStorage.getItem(key));
     }
 
-
+    sortByRatingFromTop(moviesArray) {
+        const filteredArray = moviesArray.filter(movie => movie.rating_kinopoisk);
+        filteredArray.forEach(movie => movie.rating_kinopoisk = movie.rating_kinopoisk.toFixed(1));
+        return filteredArray.sort((a,b) => b.rating_kinopoisk - a.rating_kinopoisk);
+    }
 
 
     // Development method

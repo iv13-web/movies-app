@@ -17,7 +17,7 @@ import {AboutComponent} from './components/about_component';
 new WelcomeComponent('welcome');
 new ThemeComponent('theme-toggler');
 
-const loader = new LoaderComponent('loader')
+const loader = new LoaderComponent('loader');
 const nav = new NavComponent('nav');
 const films = new FilmsComponent('films');
 const series = new SeriesComponent('series');
@@ -36,3 +36,4 @@ nav.selectTabs([
     {dataAttribute: 'schedule', Component: schedule},
     {dataAttribute: 'about', Component: about},
 ])
+

@@ -29,26 +29,15 @@ export class Top250Component extends Component {
         this.loader.show();
         
         const fbData = await fbApiService.fetchCard('/top250.json');
-        const top250Movies = transformFbService.fbObjectToArray(fbData);
+        let top250Movies = transformFbService.fbObjectToArray(fbData);
+        top250Movies = this.sortByRatingFromTop(top250Movies);
 
-
-
-
-
-        // console.log(top250Movies[16].error = true);
-        top250Movies.forEach(movie => {
-            console.log(typeof movie.rating_kinopoisk);
-        });
-
-
-
-        
         const html = top250Movies.map(movie => renderCard(movie));
+
         const $container = this.$element.querySelector('.container');
         this.loader.hide();
-
-        // join, чтобы не было запятых в разметке после html.map()
         $container.insertAdjacentHTML('beforeend', html.join(' '));
+        // join, чтобы не было запятых в разметке после html.map()
 
     }
 
@@ -67,8 +56,6 @@ function renderCard(movie) {
 
         const country = Array.isArray(movie.countries)
             && `${movie.countries[0]}`;
-
-        // const rating = typeof movie.rating_kinopoisk 
         
         return `
         <div class="card">
@@ -81,7 +68,7 @@ function renderCard(movie) {
                 <div class="card__original-title">${movie.title_alternative || ''}</div>
                 <div class="card__date">${movie.year}</div>
                 <div class="card__additional">${country} &bull; ${genres}</div>
-                <div class="card__bottom-button">Смотреть трейлер</div>
+                <a href="${movie.trailer}" target="_blank" class="card__bottom-button">Смотреть трейлер</a>
             </div>
             <div class="card__save-buttons">
                 <svg class="bookmark" width="20" height="20" viewBox="0 0 14 14"><path fill="rgba(0, 0, 0, 0.6)" fill-rule="evenodd" d="M9.8 3.2H4.2v7.858l2.8-1.4 2.8 1.4V3.2zM3 2h8v11l-4-2-4 2V2z"></path></svg>
@@ -92,4 +79,3 @@ function renderCard(movie) {
     `;
     }
 }
-

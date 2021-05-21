@@ -92,6 +92,8 @@ module.exports = {
     dist во время работы будет пустой, все файлы будут в оперативке */
     devServer : {
         port: 4200,
+        publicPath: "/src/assets/icons", // here's the change
+        // contentBase: path.join(__dirname, 'public')
         // hot: isDev
     },
 
