@@ -6,13 +6,15 @@ export class Component {
         this.init();
     }
 
-
     init() {
     } 
 
+    
     onShow() {
-
     }
+    
+    // afterContentInint() {
+    // }
 
     onHide() {   
     }
@@ -43,5 +45,4 @@ export class Component {
     log() {
         console.log(this);
     }
-
 }

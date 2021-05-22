@@ -16,66 +16,59 @@ export class Top250Component extends Component {
     Можно определить через hide и show в Component. Понадобится onShow и onHide.
     */ 
     init() {
-
         // чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
         setTimeout(() => {
             if ( !this.$element.classList.contains('hidden')) {
                 this.onShow();
             }
         }, 0);
-
-        
     }
 
+
     async onShow() {
-
-
 
         this.loader.show();
         
         const fbData = await fbApiService.fetchCard('/top250.json');
         let top250Movies = transformFbService.fbObjectToArray(fbData);
 
-        console.log(top250Movies);
+        // console.log(top250Movies);
 
         top250Movies = cardService.sortByRatingFromTop(top250Movies);
-
         const html = top250Movies.map(movie => cardService.render(movie));
 
-        const $container = this.$element.querySelector('.container');
         this.loader.hide();
-        $container.insertAdjacentHTML('beforeend', html.join(' '));
 
-        const modal = new MovieCardModal();
-        // $container.addEventListener('click', modal.create())
+        this.$element.querySelector('.container')
+          .insertAdjacentHTML('beforeend', html.join(' '));
 
-        $container.addEventListener('click', event => {
-
-            const setModal = async () => {
-
-                this.loader.show();
-                const json = await getJSON(event);
-                this.loader.hide();
-
-                // тут должен быть create modal
-
-                console.log(json);
-            }
-
-            setModal();
-            
-
-        });
+        this.afterContentInint();
     }
-    
+
+
+    // надо удалить обработчик событий при onHide
+    afterContentInint() {
+
+        const $container = this.$element.querySelector('.container')
+
+        const listener = async (event) => {
+
+            const modal = new MovieCardModal();
+            this.loader.show();
+            const json = await getJSON(event);
+            this.loader.hide();
+
+            modal.create(json);
+        };
+
+        $container.addEventListener('click', listener)
+    }
 
     onHide() {
+
         this.$element.querySelector('.container').innerHTML = '';
     }
 }
-
-
-
 
 async function getJSON(event) {
 
@@ -86,7 +79,7 @@ async function getJSON(event) {
     const list = transformFbService.fbObjectToArray(fbData);
     const json = list.filter(movie => movie.firebaseId === id );
 
-    return json;
+    return json[0];
 }
 
 
