@@ -61,7 +61,7 @@ export class Top250Component extends Component {
             modal.create(json);
         };
 
-        $container.addEventListener('click', listener)
+        $container.addEventListener('click', listener, {once: true});
     }
 
     onHide() {
