@@ -25,15 +25,6 @@ export class Component {
         this.onShow();
     }
 
-
-    removeListener(el) {
-
-        const clone = el.cloneNode();
-        this.$element.replaceChild(clone, el);
-        console.log(this.$element);
-    }
-
-
     listen(eventType, callback) {
         this.$element.addEventListener(eventType, callback);
     }
@@ -50,7 +41,4 @@ export class Component {
     log() {
         console.log(this);
     }
-
-
-
 }

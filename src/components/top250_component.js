@@ -1,6 +1,5 @@
 import {Component} from '../core/component';
 import {MovieCardModal} from './movie_modal_component'
-
 import {cardService} from '../services/card.service';
 import {fbApiService} from '../services/api.service';
 import {transformFbService} from '../services/transform_fb.service';
@@ -17,11 +16,19 @@ export class Top250Component extends Component {
     */ 
     init() {
         // чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
+        console.log(this.$element);
+
         setTimeout(() => {
-            if ( !this.$element.classList.contains('hidden')) {
+            if (!this.$element.classList.contains('hidden')) {
                 this.onShow();
             }
         }, 0);
+
+
+        this.$element.addEventListener('click', (event) => {
+            modalHandler.bind(this)(event);
+
+        });
     }
 
     async onShow() {
@@ -38,30 +45,12 @@ export class Top250Component extends Component {
 
         this.$element.querySelector('.container')
           .insertAdjacentHTML('beforeend', html.join(' '));
-
-        this.afterLoading();
-    }
-
-    afterLoading() {
-
-        const modalHandler = async (event) => {
-            
-            const modal = new MovieCardModal();
-            this.loader.show();
-            const json = await getJSON(event);
-            this.loader.hide();
-            modal.create(json);
-        };
-        
-        const $container = this.$element.querySelector('.container')
-        $container.addEventListener('click', modalHandler);
     }
 
     onHide() {
-
-        const $container = this.$element.querySelector('.container')
-        $container.innerHTML = '';
-        this.removeListener($container);
+        // const $container = this.$element.querySelector('.container')
+        // $container.innerHTML = '';
+        // this.removeListener($container);
     }
 }
 
@@ -72,6 +61,14 @@ async function getJSON(event) {
     const list = transformFbService.fbObjectToArray(fbData);
     const json = list.filter(movie => movie.firebaseId === id );
     return json[0];
+}
+
+async function modalHandler (event) {
+    const modal = new MovieCardModal();
+    this.loader.show();
+    const json = await getJSON(event);
+    this.loader.hide();
+    modal.create(json);
 }
 
 
