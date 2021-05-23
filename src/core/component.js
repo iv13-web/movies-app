@@ -9,12 +9,8 @@ export class Component {
     init() {
     } 
 
-    
     onShow() {
     }
-    
-    // afterContentInint() {
-    // }
 
     onHide() {   
     }
@@ -28,6 +24,15 @@ export class Component {
         this.$element.classList.remove('hidden');
         this.onShow();
     }
+
+
+    removeListener(el) {
+
+        const clone = el.cloneNode();
+        this.$element.replaceChild(clone, el);
+        console.log(this.$element);
+    }
+
 
     listen(eventType, callback) {
         this.$element.addEventListener(eventType, callback);
@@ -45,4 +50,7 @@ export class Component {
     log() {
         console.log(this);
     }
+
+
+
 }

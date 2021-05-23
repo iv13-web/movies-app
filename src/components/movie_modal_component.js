@@ -1,29 +1,32 @@
 export class MovieCardModal {
 
     create(json) {
-        const modal = renderModal(json);
-        console.log('Added')
+
+
+        const modal = document.createElement('div');
+        modal.classList.add('modal__movie-modal');
+        modal.insertAdjacentHTML('afterbegin', `
+    
+                    
+            <div class="modal">
+                <button class="btn">${json.title}</button>
+            </div> 
+    
+        `);
+
+        document.querySelector('body').insertAdjacentElement('beforeend', modal);
+
         modal.addEventListener('click', modalHandler);
 
+        return modal;
     }
-}
 
-function renderModal(json) {
-    const modal = document.createElement('div');
-    modal.classList.add('modal__movie-modal');
-    modal.insertAdjacentHTML('afterbegin', `
 
-                
-        <div class="modal">
-            <button class="btn">${json.title}</button>
-        </div> 
-
-    `);
-    document.querySelector('body').insertAdjacentElement('beforeend', modal);
-    return modal;
 }
 
 function modalHandler(event) {
-    event.target.classList.contains('btn') && console.log('!!!');
+    event.target.classList.contains('btn') && this.remove('hidden');
 }
+
+
 

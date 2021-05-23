@@ -19,6 +19,7 @@ function themeHandler() {
     this.getFromlocalStorage('themePrefered') === 'dark' 
       ? this.savelocalStorage('themePrefered', 'light')  
       : this.savelocalStorage('themePrefered', 'dark');
+
 }
 
 function setThemeAfterReload() {

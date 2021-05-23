@@ -78,7 +78,8 @@ module.exports = {
         extensions: ['.js', '.json'],
         alias: {
             '@modules': path.resolve(__dirname, 'src/modules'),
-            '@': path.resolve(__dirname, 'src')
+            '@': path.resolve(__dirname, 'src'),
+            'icons': path.resolve(__dirname, 'src/assets/icons')
         }
     },
 
@@ -92,8 +93,8 @@ module.exports = {
     dist во время работы будет пустой, все файлы будут в оперативке */
     devServer : {
         port: 4200,
-        publicPath: "/src/assets/icons", // here's the change
-        // contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'src/assets')
+
         // hot: isDev
     },
 
@@ -111,7 +112,11 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'src/favicon.ico'),
                     to: path.resolve(__dirname, 'dist')
-                }
+                },
+                {
+                    from: path.resolve(__dirname, 'src/assets/icons'),
+                    to: path.resolve(__dirname, 'dist/assets/icons')
+                },
             ]
         }),
 
@@ -171,7 +176,7 @@ module.exports = {
             },
             {   //file-loader работает в т.ч. со шрифтами 
                 test: /\.(png|jpe?g|svg|gif|ico|ttf|woff|woff2|eot)$/,
-                use: ['file-loader']
+                use: ['file-loader'],
             },
         ]
     }
