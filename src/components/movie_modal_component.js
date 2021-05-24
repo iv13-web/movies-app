@@ -25,7 +25,12 @@ export class MovieCardModal {
 }
 
 function modalHandler(event) {
-    event.target.classList.contains('btn') && this.remove('hidden');
+    event.target.classList.contains('btn') && this.remove();
+
+
+
+
+    // сделать добавление класса для плавного закрытия, а потом через stetimeout - remove из дом
 }
 
 

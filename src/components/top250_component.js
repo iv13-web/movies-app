@@ -15,19 +15,16 @@ export class Top250Component extends Component {
     Можно определить через hide и show в Component. Понадобится onShow и onHide.
     */ 
     init() {
-        // чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
-        console.log(this.$element);
-
+        // setTimeout чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
         setTimeout(() => {
             if (!this.$element.classList.contains('hidden')) {
                 this.onShow();
             }
         }, 0);
 
-
-        this.$element.addEventListener('click', (event) => {
+        this.$element.addEventListener('click', event => {
             modalHandler.bind(this)(event);
-
+            // сюда можно добавить функции для сохранения в избранное
         });
     }
 
@@ -35,7 +32,8 @@ export class Top250Component extends Component {
 
         this.loader.show();
         
-        const fbData = await fbApiService.fetchCard('/top250.json');
+        // const fbData = await fbApiService.fetchCard('/top250.json');
+        const fbData = await fbApiService.fetchCard('/movies.json');
         let top250Movies = transformFbService.fbObjectToArray(fbData);
 
         top250Movies = cardService.sortByRatingFromTop(top250Movies);
@@ -48,9 +46,8 @@ export class Top250Component extends Component {
     }
 
     onHide() {
-        // const $container = this.$element.querySelector('.container')
-        // $container.innerHTML = '';
-        // this.removeListener($container);
+        const $container = this.$element.querySelector('.container');
+        $container.innerHTML = '';
     }
 }
 
@@ -64,6 +61,7 @@ async function getJSON(event) {
 }
 
 async function modalHandler (event) {
+    
     const modal = new MovieCardModal();
     this.loader.show();
     const json = await getJSON(event);
