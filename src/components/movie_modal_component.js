@@ -1,3 +1,4 @@
+
 export class MovieCardModal {
 
     create(json) {
@@ -6,9 +7,9 @@ export class MovieCardModal {
         modal.classList.add('modal');
         modal.insertAdjacentHTML('afterbegin', `
 
-            <div class="modal__overlay">
+            <div class="modal__overlay" data-act="close">
                 <div class="modal__window">
-                    <div class="modal__window-close"></div>
+                    <div class="modal__window-close" data-act="close"></div>
                     <div class="modal__window-wrapper">
                         <h1 class="modal__title">${json.title}</h1>
                         <div class="modal__window-top">
@@ -65,8 +66,12 @@ export class MovieCardModal {
 
 function modalHandler(event) {
 
-    event.target.classList.contains('modal__window-close') && this.remove();
+    document.querySelector('body')
+      .classList.remove('stop-scroll');
 
+    event.target.dataset.act === 'close' && this.remove();
+    
+    
     // сделать добавление класса для плавного закрытия, а потом через stetimeout - remove из дом
 }
 

@@ -21,7 +21,7 @@ class CardService {
                     <div class="card__original-title">${movie.title_alternative || ''}</div>
                     <div class="card__date">${movie.year}</div>
                     <div class="card__additional">${country} &bull; ${genres}</div>
-                    <a href="${movie.trailer}" target="_blank" class="card__bottom-button">Смотреть трейлер</a>
+                    <a href="${movie.trailer}" target="_blank" class="card__bottom-button" data-act="trailer">Смотреть трейлер</a>
                 </div>
                 <div class="card__save-buttons">
                     <svg class="bookmark" data-id="${movie.firebaseId} width="20" height="20" viewBox="0 0 14 14"><path fill="rgba(0, 0, 0, 0.6)" fill-rule="evenodd" d="M9.8 3.2H4.2v7.858l2.8-1.4 2.8 1.4V3.2zM3 2h8v11l-4-2-4 2V2z"></path></svg>

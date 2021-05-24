@@ -23,7 +23,6 @@ export class Top250Component extends Component {
         }, 0);
 
         this.$element.addEventListener('click', event => {
-            
             modalHandler.bind(this)(event);
             // сюда можно добавить функции для сохранения в избранное
         });
@@ -60,13 +59,19 @@ async function getJSON(event) {
     return json[0];
 }
 
-async function modalHandler (event) {
-    console.log(this.$element);
-    const modal = new MovieCardModal();
-    this.loader.show();
-    const json = await getJSON(event);
-    this.loader.hide();
-    modal.create(json);
+async function modalHandler(event) {
+
+    if (event.target.dataset.act != 'trailer' ) {
+
+        const modal = new MovieCardModal();
+        this.loader.show();
+        const json = await getJSON(event);
+        this.loader.hide();
+        modal.create(json);
+    
+        document.querySelector('body')
+          .classList.add('stop-scroll');
+    }
 }
 
 
