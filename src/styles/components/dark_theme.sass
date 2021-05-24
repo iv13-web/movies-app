@@ -55,7 +55,8 @@
       .additions
         path
           fill: #ddd
-  
+  .loader__overlay
+    background-color: rgba(0, 0, 0, .8)
   .camera
     &__body
       background-color: #ffffff38
@@ -69,10 +70,25 @@
       &-optic
         background-color: #ffffff38
           
+  .modal
+    &__window,
+    &__window-wrapper,
+    &__window-close
+      background-color: #444444 !important
+    &__additions,
+    &__description,
+    &__extra-info
+      color: #bbbbbb85  
+    &__heading
+      color: #bbb
 
-  
-  
-  
+  .swiper-pagination-bullet-active ,
+  .swiper-pagination-bullet
+    background-color: #b790dc73
+
+
+
+
 // @media (prefers-color-scheme: dark) 
 //   body 
 //     color: #eee

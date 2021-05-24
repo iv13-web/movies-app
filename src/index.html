@@ -10,6 +10,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <title>Movies</title>
 </head>
 <body>
@@ -100,54 +101,6 @@
 
     <div class="films" id="films">
         <h1>Фильмы</h1>
-
-        <div class="modal">
-            <div class="modal__overlay">
-
-
-                <div class="modal__window">
-
-                    <div class="modal__window-close"></div>
-                    
-
-                    <div class="modal__window-wrapper">
-
-                        <div class="modal__window-top">
-                    
-                            <img class="modal__img" src="./assets/icons/1.jpg" alt="">
-
-                            <div class="modal__additions">
-                                <span>Жанр:&nbsp;Драма</span>
-                                <span>Страна:&nbsp;США</span>
-                                <span>Год:&nbsp;1994</span>
-                                <span>Рейтинг:&nbsp;9.0</span>
-                                <span>Рейтинг IMDB:&nbsp;9.2</span>
-                                <span>Длительность:&nbsp;88 мин</span>
-                            </div>
-
-                        </div>
-
-                        <div class="modal__window-bottom">
-                    
-                            <p class="modal__title">Побег из Шоушенка</p>
-                            <p class="modal__description">Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни.</p>
-                            <p class="modal__description">Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни.</p><p class="modal__description">Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни.</p><p class="modal__description">Бухгалтер Энди Дюфрейн обвинён в убийстве собственной жены и её любовника. Оказавшись в тюрьме под названием Шоушенк, он сталкивается с жестокостью и беззаконием, царящими по обе стороны решётки. Каждый, кто попадает в эти стены, становится их рабом до конца жизни.</p>
-
-
-                        </div>
-                        
-
-                    </div>
-
-
-                </div>
-
-            </div>
-            
-            <!-- <button id="btn"></button> -->
-        </div> 
-
-
     </div>
 
 
@@ -183,36 +136,37 @@
     </div>
 
     <div id="loader" class="hidden">
-        <div class="camera__wrap">
-            <div class="camera__body">
-                <div class="camera__body-k7">
-                    <div class="tape">
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="center"></div>
+        <div class="loader__overlay">
+            <div class="camera__wrap">
+                <div class="camera__body">
+                    <div class="camera__body-k7">
+                        <div class="tape">
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="center"></div>
+                        </div>
+                        <div class="tape">
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="roll"></div>
+                            <div class="center"></div>
+                        </div>
                     </div>
-                    <div class="tape">
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="roll"></div>
-                        <div class="center"></div>
+                    <div class="camera__body__stuff">
+                        <div class="camera__body__stuff-bat"></div>
+                        <div class="camera__body__stuff-pointer first"></div>
+                        <div class="camera__body__stuff-pointer"></div>
                     </div>
                 </div>
-                <div class="camera__body__stuff">
-                    <div class="camera__body__stuff-bat"></div>
-                    <div class="camera__body__stuff-pointer first"></div>
-                    <div class="camera__body__stuff-pointer"></div>
-                </div>
+                <div class="camera__body-optic"></div>
+                <div class="camera__body-light"></div>
             </div>
-            <div class="camera__body-optic"></div>
-            <div class="camera__body-light"></div>
         </div>
     </div>
 
-
-    
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
 </body>
 </html>

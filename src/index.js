@@ -1,4 +1,3 @@
-// import {Component} from './core/component';
 import './styles/index.sass';
 
 import {WelcomeComponent} from './components/welcome_component';
@@ -36,5 +35,6 @@ nav.selectTabs([
     {dataAttribute: 'news', Component: news},
     {dataAttribute: 'schedule', Component: schedule},
     {dataAttribute: 'about', Component: about},
-])
+]);
+
 

@@ -13,7 +13,7 @@ class CardService {
             return `
             <div class="card" data-id="${movie.firebaseId}">
                 <div class="card__poster">
-                    <img class ="card__poster-main" src="${movie.poster}" alt="">
+                    <img class ="card__poster-main" loading="lazy" src="${movie.poster}" alt="">
                     <span class="card__rating">${movie.rating_kinopoisk}</span>
                 </div>
                 <div class="card__body">
