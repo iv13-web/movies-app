@@ -2,10 +2,13 @@ export class Component {
 
     constructor (id) {
         this.$element = document.getElementById(id);
+        // this.a = 4
         this.init();
     }
 
     init() {
+
+        
     } 
 
     onShow() {

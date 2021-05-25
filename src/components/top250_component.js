@@ -1,5 +1,5 @@
 import {Component} from '../core/component';
-import {MovieCardModal} from './movie_modal_component'
+import {MovieCardModal} from './movie_modal_component';
 import {cardService} from '../services/card.service';
 import {fbApiService} from '../services/api.service';
 import {transformFbService} from '../services/transform_fb.service';
@@ -10,12 +10,9 @@ export class Top250Component extends Component {
         super (id);
         this.loader = loader;
     }
-    /*
-    init отрабатывает сразу, а надо, чтобы карточки генерировались при нажатии на таб "Top250". 
-    Можно определить через hide и show в Component. Понадобится onShow и onHide.
-    */ 
+
     init() {
-        // setTimeout чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
+     // setTimeout чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
         setTimeout(() => {
             if (!this.$element.classList.contains('hidden')) {
                 this.onShow();
@@ -33,13 +30,14 @@ export class Top250Component extends Component {
             paginationHandler.bind(this)(event);
             switchPages.bind(this)(getPageURL(event));
         });
+        console.log(this.a)
     }
 
     async onShow() {
 
         this.loader.show();
 
-        const fbData = await fbApiService.fetchCard('/page1.json');
+        const fbData = await fbApiService.fetchCards(`/page1.json`);
         let top250Movies = transformFbService.fbObjectToArray(fbData);
         top250Movies = cardService.sortByRatingFromTop(top250Movies);
         const html = top250Movies.map(movie => cardService.render(movie));
@@ -54,12 +52,12 @@ export class Top250Component extends Component {
     }
 }
 
-
+// url по умолчанию можно брать из localStorage
 async function switchPages(url=`/page1.json`) {
 
-    this.$element.querySelector('.container').innerHTML = ''
+    this.$element.querySelector('.container').innerHTML = '';
     this.loader.show();
-    const fbData = await fbApiService.fetchCard(url);
+    const fbData = await fbApiService.fetchCards(url);
     let top250Movies = transformFbService.fbObjectToArray(fbData);
     top250Movies = cardService.sortByRatingFromTop(top250Movies);
     const html = top250Movies.map(movie => cardService.render(movie));
@@ -73,6 +71,10 @@ function getPageURL(event) {
     if (event.target && event.target.classList.contains('pagination__link')) {
         return `/page${event.target.innerText}.json`;
     }
+    if (event.target && event.target.closest('.card').dataset.id) {
+        const pageNumber = document.querySelector('.pagination__link_active').innerText;
+        return `/page${pageNumber}.json`;
+    }
 }
 
 function paginationHandler (event) {
@@ -85,6 +87,8 @@ function paginationHandler (event) {
             link.classList.remove('pagination__link_active');
         });
         event.target.classList.add('pagination__link_active');
+
+        this.savelocalStorage('top250', event.target.innerText);
     }
 }
 
@@ -93,7 +97,7 @@ async function getJSON(event) {
     if (event.target && event.target.closest('.card').dataset.id) {
 
         const id = event.target.closest('.card').dataset.id;
-        const fbData = await fbApiService.fetchCard('/top250.json');
+        const fbData = await fbApiService.fetchCards(getPageURL(event));
         const list = transformFbService.fbObjectToArray(fbData);
         const json = list.filter(movie => movie.firebaseId === id );
         return json[0];
@@ -119,5 +123,5 @@ async function modalHandler(event) {
 
 /*
 const regexp = new RegExp('джен', 'i');
-top250Movies.filter(x => regexp.test(x.title))
+top250Movies.filter(movie => regexp.test(movie.title))
 */ 
