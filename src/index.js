@@ -2,7 +2,7 @@ import './styles/index.sass';
 
 import {WelcomeComponent} from './components/welcome_component';
 import {ThemeComponent} from './components/theme_component';
-
+import {pagination} from './components/pagination';
 import {LoaderComponent} from './components/loader_component';
 import {AboutComponent} from './components/about_component';
 import {NavComponent} from './components/nav_component';

@@ -15,18 +15,18 @@ class ApiService {
         }
     }
 
-    async fetchContent(url) {
-        try {
-            // const token = '/token/f2dbfdb0ba2dfd241d732c2412b9d571';
-            const response = await fetch(this.baseUrl + url);
-            const data = response.json()
-            console.log(data);
+    // async fetchContent(url) {
+    //     try {
+    //         // const token = '/token/f2dbfdb0ba2dfd241d732c2412b9d571';
+    //         const response = await fetch(this.baseUrl + url);
+    //         const data = response.json()
+    //         console.log(data);
 
 
-        } catch (e) {
-            console.log('сбой сервера');
-        }
-    }
+    //     } catch (e) {
+    //         console.log('сбой сервера');
+    //     }
+    // }
 
 
 
