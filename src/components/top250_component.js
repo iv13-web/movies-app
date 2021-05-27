@@ -12,6 +12,7 @@ export class Top250Component extends Component {
     }
 
     init() {
+
      // setTimeout чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
         setTimeout(() => {
             if (!this.$element.classList.contains('hidden')) {
@@ -35,12 +36,10 @@ export class Top250Component extends Component {
     async onShow() {
 
         this.loader.show();
-        
-        
 
-        this.$element.querySelector(".pagination ul").innerHTML = createPagination(7, 1, 1);
+        
+        this.$element.querySelector(".pagination ul").innerHTML = createPagination(6, 1, this.index());
 
-        // render(this.$element, 10,1)
 
         const fbData = await fbApiService.fetchCards(`/page1.json`);
         let top250Movies = transformFbService.fbObjectToArray(fbData);
