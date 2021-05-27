@@ -8,8 +8,19 @@ export class FilmsComponent extends Component {
     }
 
     init() {
-        
-        this.$element.querySelector(".pagination ul").innerHTML = createPagination(15, 1, this.index());
+        setTimeout(() => {
+            if (!this.$el.classList.contains('hidden')) {
+                this.onShow();
+            }
+        }, 0);
+    }
+    
+    onShow() {
+        this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, this.index());
+    }
+
+    onHide() {
+        this.$el.querySelector(".pagination").innerHTML = '';
     }
 }
 

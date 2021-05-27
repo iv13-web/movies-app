@@ -7,13 +7,13 @@ export class ThemeComponent extends Component {
 
     init() {
         setThemeAfterReload.bind(this)();
-        this.$element.addEventListener('click', themeHandler.bind(this));
+        this.$el.addEventListener('click', themeHandler.bind(this));
     }
 }
 
 function themeHandler() {
 
-    this.$element.classList.toggle('toggler_active');
+    this.$el.classList.toggle('toggler_active');
     document.body.classList.toggle('dark-theme');
 
     this.getFromlocalStorage('themePrefered') === 'dark' 
@@ -25,7 +25,7 @@ function themeHandler() {
 function setThemeAfterReload() {
 
     if (this.getFromlocalStorage('themePrefered') === 'dark' ) {
-        this.$element.classList.add('toggler_active');
+        this.$el.classList.add('toggler_active');
         document.body.classList.add('dark-theme');
     }
 }

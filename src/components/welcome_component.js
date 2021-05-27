@@ -19,5 +19,5 @@ export class WelcomeComponent extends Component {
 
 function btnHandler() {
     this.savelocalStorage('wasVisited', new Date().toLocaleDateString());
-    this.$element.remove();
+    this.$el.remove();
 }

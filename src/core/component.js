@@ -1,7 +1,7 @@
 export class Component {
 
     constructor (id) {
-        this.$element = document.getElementById(id);
+        this.$el = document.getElementById(id);
 
         // this.a = 4
         this.init();
@@ -21,12 +21,12 @@ export class Component {
     }
 
     hide() {
-        this.$element.classList.add('hidden');
+        this.$el.classList.add('hidden');
         this.onHide();
     }
 
     show() {
-        this.$element.classList.remove('hidden');
+        this.$el.classList.remove('hidden');
         this.onShow();
     }
 
@@ -40,7 +40,7 @@ export class Component {
 
     index() {
         const arr = Array.from(document.querySelectorAll('.nav__link'));
-        return arr.indexOf(arr.find(link  => link.dataset.name === this.$element.id));
+        return arr.indexOf(arr.find(link  => link.dataset.name === this.$el.id));
     }
 
     // Development method

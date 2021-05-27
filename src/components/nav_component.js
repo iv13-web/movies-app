@@ -8,7 +8,7 @@ export class NavComponent extends Component {
     }
 
     init() {
-        this.$element.addEventListener('click', tabsHandler.bind(this));
+        this.$el.addEventListener('click', tabsHandler.bind(this));
 
     }
 
@@ -33,7 +33,7 @@ function tabsHandler(event) {
         event.preventDefault();
         this.savelocalStorage('lastSelected', event.target.dataset.name);
     
-        this.$element.querySelectorAll('.nav__link').forEach(tab => {
+        this.$el.querySelectorAll('.nav__link').forEach(tab => {
             tab.classList.remove('nav__link_active');
         });
     
@@ -47,7 +47,7 @@ function tabsHandler(event) {
 
 function setActiveTabAfterReload() {
 
-    this.$element.querySelectorAll('.nav__link').forEach(tab => {
+    this.$el.querySelectorAll('.nav__link').forEach(tab => {
         tab.classList.remove('nav__link_active');
     });
 
@@ -60,6 +60,6 @@ function setActiveComponentAfterReload() {
 
     this.tabs.forEach( tab => tab.Component.hide());
     let activeTab = this.tabs.find(tab => tab.dataAttribute === this.getFromlocalStorage('lastSelected'));
-    activeTab = activeTab.Component.$element;
+    activeTab = activeTab.Component.$el;
     activeTab.classList.remove('hidden');
 }
