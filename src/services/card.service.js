@@ -37,8 +37,6 @@ class CardService {
         filteredArray.forEach(movie => movie.rating_kinopoisk = movie.rating_kinopoisk.toFixed(1));
         return filteredArray.sort((a,b) => b.rating_kinopoisk - a.rating_kinopoisk);
     }
-
-
 }
 
 export const cardService = new CardService(); 

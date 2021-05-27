@@ -27,25 +27,20 @@ export class Top250Component extends Component {
             modalHandler.bind(this)(event);
             // сюда можно добавить функции для сохранения в избранное
         });
-        // pagination.addEventListener('click', event => {
-        //     paginationHandler.bind(this)(event);
-        //     switchPages.bind(this)(getPageURL(event));
-        // });
+
+        pagination.addEventListener('click', event => {
+            switchPages.bind(this)(getPageURL(event));
+        });
     }
 
     async onShow() {
 
+        this.$element.querySelector(".pagination").innerHTML = createPagination(10, 1, this.index());
         this.loader.show();
-
-        
-        this.$element.querySelector(".pagination ul").innerHTML = createPagination(6, 1, this.index());
-
-
         const fbData = await fbApiService.fetchCards(`/page1.json`);
         let top250Movies = transformFbService.fbObjectToArray(fbData);
         top250Movies = cardService.sortByRatingFromTop(top250Movies);
         const html = top250Movies.map(movie => cardService.render(movie));
-
         this.loader.hide();
         this.$element.querySelector('.container')
           .insertAdjacentHTML('beforeend', html.join(' '));
@@ -81,21 +76,6 @@ function getPageURL(event) {
     }
 }
 
-function paginationHandler (event) {
-
-    event.preventDefault();
-    if (event.target && event.target.classList.contains('pagination__link')) {
-
-        const links = document.querySelectorAll('.pagination__link');
-        links.forEach(link => {
-            link.classList.remove('pagination__link_active');
-        });
-        event.target.classList.add('pagination__link_active');
-
-        this.savelocalStorage('top250', event.target.innerText);
-    }
-}
-
 async function getJSON(event) {
 
     if (event.target && event.target.closest('.card').dataset.id) {
@@ -121,6 +101,17 @@ async function modalHandler(event) {
         document.querySelector('body')
           .classList.add('stop-scroll');
     }
+}
+
+async function func (url) {
+    this.loader.show();
+    const fbData = await fbApiService.fetchCards(url);
+    let top250Movies = transformFbService.fbObjectToArray(fbData);
+    top250Movies = cardService.sortByRatingFromTop(top250Movies);
+    const html = top250Movies.map(movie => cardService.render(movie));
+    this.loader.hide();
+    this.$element.querySelector('.container')
+      .insertAdjacentHTML('beforeend', html.join(' '));
 }
 
 

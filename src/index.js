@@ -1,10 +1,7 @@
 import './styles/index.sass';
 
-import {createPagination} from './components/pagination'; // для теста 
 import {WelcomeComponent} from './components/welcome_component';
 import {ThemeComponent} from './components/theme_component';
-
-
 import {LoaderComponent} from './components/loader_component';
 import {AboutComponent} from './components/about_component';
 import {NavComponent} from './components/nav_component';
