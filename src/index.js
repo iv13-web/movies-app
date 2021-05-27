@@ -1,8 +1,10 @@
 import './styles/index.sass';
 
+import {createPagination} from './components/pagination'; // для теста 
 import {WelcomeComponent} from './components/welcome_component';
 import {ThemeComponent} from './components/theme_component';
-import {pagination} from './components/pagination';
+
+
 import {LoaderComponent} from './components/loader_component';
 import {AboutComponent} from './components/about_component';
 import {NavComponent} from './components/nav_component';
@@ -12,12 +14,8 @@ import {Top250Component} from './components/top250_component';
 import {NewsComponent} from './components/news_component';
 import {ScheduleComponent} from './components/schedule_component';
 
-
-
 new WelcomeComponent('welcome');
 new ThemeComponent('theme-toggler');
-
-
 const loader = new LoaderComponent('loader');
 const nav = new NavComponent('nav');
 const films = new FilmsComponent('films');

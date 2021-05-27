@@ -1,5 +1,6 @@
 import {Component} from '../core/component';
 
+
 export class FilmsComponent extends Component {
     constructor(id) {
         super (id);
@@ -7,7 +8,10 @@ export class FilmsComponent extends Component {
     }
 
     init() {
-
+        this.$element.querySelector(".pagination ul").innerHTML = createPagination(10, 1, 0);
     }
 
+    
+
 }
+

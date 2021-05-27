@@ -8,7 +8,7 @@ export class NavComponent extends Component {
     }
 
     init() {
-        this.listen('click', tabsHandler.bind(this));
+        this.$element.addEventListener('click', tabsHandler.bind(this));
     }
 
 

@@ -26,16 +26,21 @@ export class Top250Component extends Component {
             modalHandler.bind(this)(event);
             // сюда можно добавить функции для сохранения в избранное
         });
-        pagination.addEventListener('click', event => {
-            paginationHandler.bind(this)(event);
-            switchPages.bind(this)(getPageURL(event));
-        });
-        console.log(this.a)
+        // pagination.addEventListener('click', event => {
+        //     paginationHandler.bind(this)(event);
+        //     switchPages.bind(this)(getPageURL(event));
+        // });
     }
 
     async onShow() {
 
         this.loader.show();
+        
+        
+
+        this.$element.querySelector(".pagination ul").innerHTML = createPagination(7, 1, 1);
+
+        // render(this.$element, 10,1)
 
         const fbData = await fbApiService.fetchCards(`/page1.json`);
         let top250Movies = transformFbService.fbObjectToArray(fbData);

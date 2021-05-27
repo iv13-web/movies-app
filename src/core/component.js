@@ -27,10 +27,6 @@ export class Component {
         this.onShow();
     }
 
-    listen(eventType, callback) {
-        this.$element.addEventListener(eventType, callback);
-    }
-
     savelocalStorage(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
     }

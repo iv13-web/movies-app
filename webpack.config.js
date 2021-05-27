@@ -62,11 +62,10 @@ module.exports = {
     target: 'web',
     context: path.resolve(__dirname, 'src'), 
     mode: 'development',
-
     entry: {
         main: ['@babel/polyfill','./index.js']
     },
-
+    
     output: {
         filename: filename('js'),
         path: path.resolve(__dirname, 'dist')
@@ -116,6 +115,10 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'src/assets/icons'),
                     to: path.resolve(__dirname, 'dist/assets/icons')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/modules'),
+                    to: path.resolve(__dirname, 'dist/modules')
                 },
             ]
         }),

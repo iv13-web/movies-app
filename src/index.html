@@ -53,6 +53,7 @@
             <div class="burger"></div>
 
             <div class="logo">
+
                 <svg width="113" height="26" viewBox="0 0 113 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path class="logo__text" d="M29.4489 21H33.0795V13.142C33.0795 11.6932 34 10.7301 35.2102 10.7301C36.4034 10.7301 37.2045 11.5483 37.2045 12.8352V21H40.7244V13.0057C40.7244 11.6506 41.5 10.7301 42.821 10.7301C43.9801 10.7301 44.8494 11.4545 44.8494 12.9119V21H48.4716V12.196C48.4716 9.35795 46.7841 7.73864 44.3466 7.73864C42.429 7.73864 40.9375 8.71875 40.4006 10.2188H40.2642C39.8466 8.7017 38.5085 7.73864 36.7102 7.73864C34.946 7.73864 33.608 8.67614 33.0625 10.2188H32.9091V7.90909H29.4489V21ZM57.2543 21.2557C61.2259 21.2557 63.6974 18.5369 63.6974 14.5057C63.6974 10.4489 61.2259 7.73864 57.2543 7.73864C53.2827 7.73864 50.8111 10.4489 50.8111 14.5057C50.8111 18.5369 53.2827 21.2557 57.2543 21.2557ZM57.2713 18.4432C55.4389 18.4432 54.5014 16.7642 54.5014 14.4801C54.5014 12.196 55.4389 10.5085 57.2713 10.5085C59.0696 10.5085 60.0071 12.196 60.0071 14.4801C60.0071 16.7642 59.0696 18.4432 57.2713 18.4432ZM77.8175 7.90909H73.9737L71.2635 17.2756H71.1271L68.4084 7.90909H64.5732L69.1499 21H73.2408L77.8175 7.90909ZM79.6754 21H83.3061V7.90909H79.6754V21ZM81.4993 6.22159C82.5817 6.22159 83.468 5.39489 83.468 4.38068C83.468 3.375 82.5817 2.54829 81.4993 2.54829C80.4254 2.54829 79.5391 3.375 79.5391 4.38068C79.5391 5.39489 80.4254 6.22159 81.4993 6.22159ZM92.1804 21.2557C95.419 21.2557 97.6009 19.679 98.1122 17.25L94.7543 17.0284C94.3878 18.0256 93.4503 18.5455 92.2401 18.5455C90.4247 18.5455 89.2741 17.3438 89.2741 15.392V15.3835H98.1889V14.3864C98.1889 9.9375 95.4957 7.73864 92.0355 7.73864C88.1832 7.73864 85.6861 10.4744 85.6861 14.5142C85.6861 18.6648 88.1491 21.2557 92.1804 21.2557ZM89.2741 13.1335C89.3509 11.642 90.4844 10.4489 92.0952 10.4489C93.6719 10.4489 94.7628 11.5739 94.7713 13.1335H89.2741ZM111.45 11.642C111.126 9.23011 109.183 7.73864 105.876 7.73864C102.527 7.73864 100.32 9.28977 100.328 11.8125C100.32 13.7727 101.555 15.0426 104.112 15.554L106.379 16.0057C107.521 16.2358 108.041 16.6534 108.058 17.3097C108.041 18.0852 107.197 18.6392 105.928 18.6392C104.632 18.6392 103.771 18.0852 103.55 17.0199L99.9787 17.2074C100.32 19.7131 102.45 21.2557 105.919 21.2557C109.311 21.2557 111.74 19.5256 111.749 16.9432C111.74 15.0511 110.504 13.9176 107.964 13.3977L105.595 12.9205C104.376 12.6562 103.925 12.2386 103.933 11.608C103.925 10.8239 104.811 10.3125 105.936 10.3125C107.197 10.3125 107.947 11.0028 108.126 11.8466L111.45 11.642Z" fill="#201D1D"/>
                     <path d="M18.2514 6.62232C18.2514 8.19061 16.9801 9.46173 15.412 9.46173C13.8437 9.46173 12.5726 8.19061 12.5726 6.62232C12.5726 5.0542 13.8437 3.7829 15.412 3.7829C16.9801 3.7829 18.2514 5.0542 18.2514 6.62232V6.62232Z" fill="#FFCF11"/>
@@ -99,49 +100,19 @@
         </nav>
     </div>
 
+
     <div class="films" id="films">
         <h1>Фильмы</h1>
-
-        <div class="pagination-wrapper">
-            <nav class="pagination" id="pagination">
-                <a class="pagination__link pagination__link_active" data-name="films" href="">1</a>
-                <a class="pagination__link" data-name="series" href="">2</a>
-                <a class="pagination__link" data-name="top250" href="">3</a>
-                <a class="pagination__link" data-name="news" href="">4</a>
-                <a class="pagination__link" data-name="schedule" href="">5</a>
-                <a class="pagination__link" data-name="about" href="">...</a>
-                <a class="pagination__link" data-name="about" href="">10</a>
-            </nav>
-        </div>
+        <div class="pagination"><ul></ul></div>
     </div>
-
-
-
-
 
     <div class="series hidden" id="series">
         <h1>Сериалы</h1>
     </div>
 
     <div class="top-250 hidden" id="top-250">
-
-
-
-        <div class="container">
-
-        </div>
-
-        <div class="pagination-wrapper">
-            <nav class="pagination" id="pagination">
-                <a class="pagination__link pagination__link_active" data-name="films" href="">1</a>
-                <a class="pagination__link" data-name="series" href="">2</a>
-                <a class="pagination__link" data-name="top250" href="">3</a>
-                <a class="pagination__link" data-name="news" href="">4</a>
-                <a class="pagination__link" data-name="schedule" href="">5</a>
-                <a class="pagination__link" data-name="about" href="">...</a>
-                <a class="pagination__link" data-name="about" href="">10</a>
-            </nav>
-        </div>
+        <div class="container"></div>
+        <div class="pagination"><ul></ul></div>
     </div>
 
     <div class="news hidden" id="news">
@@ -154,10 +125,6 @@
 
     <div class="about hidden" id="about">
         <h1>О проекте</h1>
-
-            
-            
-
     </div>
 
     <div id="loader" class="hidden">
@@ -191,6 +158,7 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="./modules/pagination.js"></script>
+    <script src="./modules/swiper-bundle.min.js"></script>
 </body>
 </html>

@@ -7,7 +7,7 @@ export class ThemeComponent extends Component {
 
     init() {
         setThemeAfterReload.bind(this)();
-        this.listen('click', themeHandler.bind(this));
+        this.$element.addEventListener('click', themeHandler.bind(this));
     }
 }
 

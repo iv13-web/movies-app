@@ -1,31 +1,31 @@
-export class LogSomeData {
-    constructor(content) {
-        this.content = content;
-        this.date = `${new Date().getDate()}.${new Date().getMonth() + 1}.${new Date().getFullYear()}`;
-    }
+// export class LogSomeData {
+//     constructor(content) {
+//         this.content = content;
+//         this.date = `${new Date().getDate()}.${new Date().getMonth() + 1}.${new Date().getFullYear()}`;
+//     }
 
-    toString() {
-        return JSON.stringify({
-            content: this.content,
-            date: this.date,
-        });
-    }
-}
+//     toString() {
+//         return JSON.stringify({
+//             content: this.content,
+//             date: this.date,
+//         });
+//     }
+// }
 
 
-// DARK THEME
-const btn = document.querySelector(".toggler")
+// // DARK THEME
+// const btn = document.querySelector(".toggler")
 
-btn.addEventListener('click', () => {
-    btn.classList.toggle('toggler_active');
+// btn.addEventListener('click', () => {
+//     btn.classList.toggle('toggler_active');
 
-    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
+//     const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)")
 
-    prefersDarkScheme.matches 
-      ? document.body.classList.toggle("light-theme")
-      : document.body.classList.toggle("dark-theme")
+//     prefersDarkScheme.matches 
+//       ? document.body.classList.toggle("light-theme")
+//       : document.body.classList.toggle("dark-theme")
 
-});
+// });
 
 
 
