@@ -16,7 +16,8 @@ export class FilmsComponent extends Component {
     }
     
     onShow() {
-        this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, this.index());
+
+        this.$el.querySelector(".pagination").innerHTML = createPagination(8, 1, 'films');
     }
 
     onHide() {

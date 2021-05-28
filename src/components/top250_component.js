@@ -32,13 +32,26 @@ export class Top250Component extends Component {
     }
 
     onShow() {
-        this.$el.querySelector(".pagination").innerHTML = createPagination(10, 1, this.index());
+
+        this.$el.querySelector(".pagination").innerHTML = createPagination(5, 1, 'top250');
         createContent.bind(this)();
     }
 
     onHide() {
         this.$el.querySelector('.container').innerHTML = '';
+        this.$el.querySelector(".pagination").innerHTML = '';
     }
+}
+
+async function createContent (url=`/page1.json`) {
+    this.loader.show();
+    const fbData = await fbApiService.fetchCards(url);
+    let top250Movies = transformFbService.fbObjectToArray(fbData);
+    top250Movies = cardService.sortByRatingFromTop(top250Movies);
+    const html = top250Movies.map(movie => cardService.render(movie));
+    this.loader.hide();
+    this.$el.querySelector('.container')
+      .insertAdjacentHTML('beforeend', html.join(' '));
 }
 
 // url по умолчанию можно брать из localStorage
@@ -61,6 +74,7 @@ function getPageURL(event) {
     } catch (e){}
 }
 
+// Для поиска конкретного json-а для модалки
 async function getJSON(event) {
 
     if (event.target && event.target.closest('.card').dataset.id) {
@@ -85,16 +99,7 @@ async function modalHandler(event) {
     }
 }
 
-async function createContent (url=`/page1.json`) {
-    this.loader.show();
-    const fbData = await fbApiService.fetchCards(url);
-    let top250Movies = transformFbService.fbObjectToArray(fbData);
-    top250Movies = cardService.sortByRatingFromTop(top250Movies);
-    const html = top250Movies.map(movie => cardService.render(movie));
-    this.loader.hide();
-    this.$el.querySelector('.container')
-      .insertAdjacentHTML('beforeend', html.join(' '));
-}
+
 
 
 

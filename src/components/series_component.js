@@ -7,7 +7,17 @@ export class SeriesComponent extends Component {
     }
 
     init() {
+        // this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, 'series');
 
+    }
+
+    onShow() {
+        // this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, this.index());
+        this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, 'series');
+    }
+
+    onHide() {
+        this.$el.querySelector(".pagination").innerHTML = '';
     }
 
 }

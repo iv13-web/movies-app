@@ -1,21 +1,13 @@
-function createPagination(totalPages, page, i) {
-    
-    let html = '';
+function createPagination(totalPages, page, selector) {
+        
     let active;
     let beforePage = page - 1;
     let afterPage = page + 1;
-  
-    if (page > 2) { //if page value is less than 2 then add 1 after the previous button
-        html += `<div class="pagination__link" onclick="createPagination(${totalPages}, 1, ${i})">1</div>`;
-        if (page > 3) { //if page value is greater than 3 then add this (...) after the first li or page
-            html += `<div class="pagination__dots">...</div>`;
-        }
-    }
-  
+    
     // how many pages or li show before the current li
-    if (page == totalPages) {
+    if (page == totalPages && totalPages > 2) {
         beforePage = beforePage - 2;
-    } else if (page == totalPages - 1) {
+    } else if (page == totalPages - 1 && totalPages > 2) {
         beforePage = beforePage - 1;
     }
     
@@ -25,28 +17,80 @@ function createPagination(totalPages, page, i) {
     } else if (page == 2) {
         afterPage  = afterPage + 1;
     }
-  
-    for (let plength = beforePage; plength <= afterPage; plength++) {
-        if (plength > totalPages) { //if plength is greater than totalPage length then continue
-            continue;
+
+    try {
+
+        let html = '';
+        if (page > 2 && totalPages > 4) { //if page value is less than 2 then add 1 after the previous button
+            html += `<div class="pagination__link" onclick="createPagination(${totalPages}, 1, ${selector})">1</div>`;
+            if (page > 3 && totalPages > 5) { //if page value is greater than 3 then add this (...) after the first li or page
+                html += `<div class="pagination__dots">...</div>`;
+            }
         }
-        if (plength == 0) { //if plength is 0 than add +1 in plength value
-            plength = plength + 1;
+        
+        for (let plength = beforePage; plength <= afterPage; plength++) {
+            if (plength > totalPages) { //if plength is greater than totalPage length then continue
+                continue;
+            }
+            if (plength == 0) { //if plength is 0 than add +1 in plength value
+                plength = plength + 1;
+            }
+            if (page == plength){ //if page is equal to plength than assign active string in the active variable
+                active = "pagination__link_active";
+            } else { //else leave empty to the active variable
+                active = "";
+            }
+            html += `<div class="pagination__link ${active}" onclick="createPagination(${totalPages}, ${plength}, ${selector})">${plength}</div>`;
         }
-        if (page == plength){ //if page is equal to plength than assign active string in the active variable
-            active = "pagination__link_active";
-        } else { //else leave empty to the active variable
-            active = "";
+        
+        if (page < totalPages - 1 && totalPages > 4) { //if page value is less than totalPage value by -1 then show the last li or page
+            if (page < totalPages - 2 && totalPages >= 6) { //if page value is less than totalPage value by -2 then add this (...) before the last li or page
+                html += `<div class="pagination__dots">...</div>`;
+            }
+            html += `<div class="last pagination__link" onclick="createPagination(${totalPages}, ${totalPages}, ${selector})">${totalPages}</div>`;
         }
-        html += `<div class="pagination__link ${active}" onclick="createPagination(${totalPages}, ${plength}, ${i})">${plength}</div>`;
+
+        let a = Array.from(document.querySelectorAll(".pagination"));
+        let div = Array.from(document.querySelectorAll(".catalog")).find(x => x.id === selector);
+        let b =  a.find(pag => pag.dataset.id === div.id);
+        b.innerHTML = html;
+        return html;
+        
+    } catch (e) {
+
+        let html = '';
+        if (page > 2 && totalPages > 4) { //if page value is less than 2 then add 1 after the previous button
+            html += `<div class="pagination__link" onclick="createPagination(${totalPages}, 1, ${selector.id})">1</div>`;
+            if (page > 3 && totalPages > 5) { //if page value is greater than 3 then add this (...) after the first li or page
+                html += `<div class="pagination__dots">...</div>`;
+            }
+        }
+        
+        for (let plength = beforePage; plength <= afterPage; plength++) {
+            if (plength > totalPages) { //if plength is greater than totalPage length then continue
+                continue;
+            }
+            if (plength == 0) { //if plength is 0 than add +1 in plength value
+                plength = plength + 1;
+            }
+            if (page == plength){ //if page is equal to plength than assign active string in the active variable
+                active = "pagination__link_active";
+            } else { //else leave empty to the active variable
+                active = "";
+            }
+            html += `<div class="pagination__link ${active}" onclick="createPagination(${totalPages}, ${plength}, ${selector.id})">${plength}</div>`;
+        }
+        
+        if (page < totalPages - 1 && totalPages > 4) { //if page value is less than totalPage value by -1 then show the last li or page
+            if (page < totalPages - 2  && totalPages >= 6) { //if page value is less than totalPage value by -2 then add this (...) before the last li or page
+                html += `<div class="pagination__dots">...</div>`;
+            }
+            html += `<div class="last pagination__link" onclick="createPagination(${totalPages}, ${totalPages}, ${selector.id})">${totalPages}</div>`;
+        }
+        let a = Array.from(document.querySelectorAll(".pagination"));
+        let div = Array.from(document.querySelectorAll(".catalog")).find(x => x.id === selector.id);
+        let b =  a.find(pag => pag.dataset.id === div.id);
+        b.innerHTML = html;
+        return html;
     }
-  
-    if (page < totalPages - 1) { //if page value is less than totalPage value by -1 then show the last li or page
-        if (page < totalPages - 2) { //if page value is less than totalPage value by -2 then add this (...) before the last li or page
-            html += `<div class="pagination__dots">...</div>`;
-        }
-        html += `<div class="last pagination__link" onclick="createPagination(${totalPages}, ${totalPages}, ${i})">${totalPages}</div>`;
-    }
-    document.querySelectorAll(".pagination")[i].innerHTML = html; //add li tag inside ul tag
-    return html;
 }

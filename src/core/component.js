@@ -38,11 +38,6 @@ export class Component {
         return JSON.parse(localStorage.getItem(key));
     }
 
-    index() {
-        const arr = Array.from(document.querySelectorAll('.nav__link'));
-        return arr.indexOf(arr.find(link  => link.dataset.name === this.$el.id));
-    }
-
     // Development method
     log() {
         console.log(this);
