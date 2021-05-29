@@ -3,6 +3,14 @@ export class MovieCardModal {
 
     create(json) {
 
+        const duration = json.collapse === undefined
+            ? 'данных нет'
+            : json.collapse.duration[0];
+
+        const screenshots = json.screenshots === undefined
+            ? json.frames
+            : json.screenshots;
+
         const modal = document.createElement('div');
         modal.classList.add('modal');
         modal.insertAdjacentHTML('afterbegin', `
@@ -17,7 +25,7 @@ export class MovieCardModal {
                         <div class="modal__additions">
                             <span>Жанр:&nbsp;${json.genres[0]}</span> <span>Страна:&nbsp;${json.countries[0]}</span>
                             <span>Год:&nbsp;${json.year}</span> <span>Рейтинг:&nbsp;${json.rating_kinopoisk}</span>
-                            <span>Рейтинг IMDB:&nbsp;${json.rating_imdb}</span> <span>Длительность:&nbsp;${json.collapse.duration[0]}</span>
+                            <span>Рейтинг IMDB:&nbsp;${json.rating_imdb}</span> <span>Длительность:&nbsp;${duration}</span>
                         </div>
                     </div>
                     <div class="modal__window-bottom">
@@ -25,10 +33,10 @@ export class MovieCardModal {
                         <p class="modal__heading">Кадры из фильма</p>
                         <div class="swiper-container modal__slider">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide"><img loading="lazy" src="${json.screenshots[0]}" alt=""></div>
-                                <div class="swiper-slide"><img loading="lazy" src="${json.screenshots[1]}" alt=""></div>
-                                <div class="swiper-slide"><img loading="lazy" src="${json.screenshots[2]}" alt=""></div>
-                                <div class="swiper-slide"><img loading="lazy" src="${json.screenshots[3]}" alt=""></div>
+                                <div class="swiper-slide"><img loading="lazy" src="${screenshots[0]}" alt=""></div>
+                                <div class="swiper-slide"><img loading="lazy" src="${screenshots[1]}" alt=""></div>
+                                <div class="swiper-slide"><img loading="lazy" src="${screenshots[2]}" alt=""></div>
+                                <div class="swiper-slide"><img loading="lazy" src="${screenshots[3]}" alt=""></div>
                             </div>
                             <div class="swiper-pagination"></div>
                         </div>
@@ -49,7 +57,7 @@ export class MovieCardModal {
         const swiper = new Swiper('.modal__slider', {
             slidesPerView: "auto",
             spaceBetween: 100,
-            clickable: true,
+            clickable: false,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,

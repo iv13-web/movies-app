@@ -33,7 +33,7 @@ export class Top250Component extends Component {
 
     onShow() {
 
-        this.$el.querySelector(".pagination").innerHTML = createPagination(5, 1, 'top250');
+        this.$el.querySelector(".pagination").innerHTML = createPagination(10, 1, 'top250');
         createContent.bind(this)();
     }
 
@@ -43,7 +43,7 @@ export class Top250Component extends Component {
     }
 }
 
-async function createContent (url=`/page1.json`) {
+async function createContent (url=`/top250/page1.json`) {
     this.loader.show();
     const fbData = await fbApiService.fetchCards(url);
     let top250Movies = transformFbService.fbObjectToArray(fbData);
@@ -65,11 +65,11 @@ function getPageURL(event) {
 
     try {
         if (event.target && event.target.classList.contains('pagination__link')) {
-            return `/page${event.target.innerText}.json`;
+            return `/top250/page${event.target.innerText}.json`;
         }
         if (event.target && event.target.closest('.card').dataset.id) {
             let pageNumber = document.querySelector('.pagination__link_active').innerText;
-            return `/page${pageNumber}.json`;
+            return `/top250/page${pageNumber}.json`;
         }
     } catch (e){}
 }
