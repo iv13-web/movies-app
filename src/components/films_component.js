@@ -17,11 +17,11 @@ export class FilmsComponent extends Component {
     
     onShow() {
 
-        this.$el.querySelector(".pagination").innerHTML = createPagination(8, 1, 'films');
+        this.pagination.innerHTML = createPagination(8, 1, 'films');
     }
 
     onHide() {
-        this.$el.querySelector(".pagination").innerHTML = '';
+        this.pagination.innerHTML = '';
     }
 }
 

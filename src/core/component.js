@@ -2,7 +2,8 @@ export class Component {
 
     constructor (id) {
         this.$el = document.getElementById(id);
-
+        this.container = this.$el.querySelector('.container');
+        this.pagination = this.$el.querySelector('.pagination');
         // this.a = 4
         this.init();
     }

@@ -1,4 +1,3 @@
-
 export class MovieCardModal {
 
     create(json) {
@@ -64,14 +63,12 @@ export class MovieCardModal {
             }, 
         });
 
-        modal.addEventListener('click', modalHandler);
+        modal.addEventListener('click', close);
         return modal;
     }
-
-
 }
 
-function modalHandler(event) {
+function close(event) {
 
     document.querySelector('body')
       .classList.remove('stop-scroll');

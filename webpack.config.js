@@ -120,6 +120,10 @@ module.exports = {
                     from: path.resolve(__dirname, 'src/modules'),
                     to: path.resolve(__dirname, 'dist/modules')
                 },
+                {
+                    from: path.resolve(__dirname, 'src/plugins'),
+                    to: path.resolve(__dirname, 'dist/plugins')
+                },
             ]
         }),
 

@@ -50,10 +50,10 @@ function createPagination(totalPages, page, selector) {
             html += `<div class="last pagination__link" onclick="createPagination(${totalPages}, ${totalPages}, ${selector})">${totalPages}</div>`;
         }
 
-        let a = Array.from(document.querySelectorAll(".pagination"));
-        let div = Array.from(document.querySelectorAll(".catalog")).find(x => x.id === selector);
-        let b =  a.find(pag => pag.dataset.id === div.id);
-        b.innerHTML = html;
+        let allPaginations = Array.from(document.querySelectorAll('.pagination'));
+        let component = Array.from(document.querySelectorAll('[data-type = "catalog"]')).find(component => component.id === selector);
+        let currentPagination =  allPaginations.find(pagination => pagination.dataset.id === component.id);
+        currentPagination.innerHTML = html;
         return html;
         
     } catch (e) {
@@ -87,10 +87,10 @@ function createPagination(totalPages, page, selector) {
             }
             html += `<div class="last pagination__link" onclick="createPagination(${totalPages}, ${totalPages}, ${selector.id})">${totalPages}</div>`;
         }
-        let a = Array.from(document.querySelectorAll(".pagination"));
-        let div = Array.from(document.querySelectorAll(".catalog")).find(x => x.id === selector.id);
-        let b =  a.find(pag => pag.dataset.id === div.id);
-        b.innerHTML = html;
+        let allPaginations = Array.from(document.querySelectorAll('.pagination'));
+        let component = Array.from(document.querySelectorAll('[data-type = "catalog"]')).find(component => component.id === selector.id);
+        let currentPagination =  allPaginations.find(pagination => pagination.dataset.id === component.id);
+        currentPagination.innerHTML = html;
         return html;
     }
-}
+}   
