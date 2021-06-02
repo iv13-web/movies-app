@@ -1,31 +1,32 @@
 import {Component} from '../core/component';
+import {$} from "@/core/dom";
 
 export class ThemeComponent extends Component {
     constructor (id) {
         super(id);
+        this.body = $(document.body)
     }
 
     init() {
         setThemeAfterReload.bind(this)();
-        this.$el.addEventListener('click', themeHandler.bind(this));
+        this.$el.on('click', themeHandler.bind(this));
     }
 }
 
 function themeHandler() {
 
-    this.$el.classList.toggle('toggler_active');
-    document.body.classList.toggle('dark-theme');
+    this.$el.toggle('toggler_active');
+    this.body.toggle('dark-theme');
 
-    this.getFromlocalStorage('themePrefered') === 'dark' 
-      ? this.savelocalStorage('themePrefered', 'light')  
-      : this.savelocalStorage('themePrefered', 'dark');
-
+    localStorage.getItem('themePrefered') === 'dark'
+      ? localStorage.setItem('themePrefered', 'light')
+      : localStorage.setItem('themePrefered', 'dark');
 }
 
 function setThemeAfterReload() {
 
-    if (this.getFromlocalStorage('themePrefered') === 'dark' ) {
-        this.$el.classList.add('toggler_active');
-        document.body.classList.add('dark-theme');
+    if (localStorage.getItem('themePrefered') === 'dark' ) {
+        this.$el.addClass('toggler_active');
+        this.body.addClass('dark-theme');
     }
 }

@@ -90,13 +90,19 @@
     </header>
     <div class="nav-wrapper">
         <nav class="nav" id="nav">
+            <a class="nav__link" data-name="latest" href="">Новинки</a>
             <a class="nav__link nav__link_active" data-name="popular" href="">Популярные</a>
+            <a class="nav__link" data-name="schedule" href="">Афиша</a>
             <a class="nav__link" data-name="series" href="">Сериалы</a>
             <a class="nav__link" data-name="top250" href="">Топ-250</a>
-            <a class="nav__link" data-name="news" href="">Новости</a>
-            <a class="nav__link" data-name="schedule" href="">Афиша</a>
             <a class="nav__link" data-name="about" href="">О проекте</a>
         </nav>
+    </div>
+
+
+    <div class="hidden" id="latest" data-type="catalog" >
+        <div class="container"></div>
+        <div class="pagination" data-id="latest"></div>
     </div>
 
 
@@ -104,9 +110,6 @@
         <div class="container"></div>
         <div class="pagination" data-id="popular"></div>
     </div>
-
-
-
 
 
 
@@ -169,18 +172,15 @@
 
 
         </div>
-
         <div class="pagination" data-id="series"></div>
     </div>
+
 
     <div class="hidden" id="top250" data-type="catalog">
         <div class="container"></div>
         <div class="pagination" data-id="top250"></div>
     </div>
 
-    <div class="news hidden" id="news">
-        <h1>Новости</h1>
-    </div>
 
     <div class="schedule hidden" id="schedule">
         <h1>Афиша</h1>

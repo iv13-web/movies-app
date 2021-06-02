@@ -1,6 +1,6 @@
+import {$} from '@/core/dom'
 import {Component} from '@/core/component';
 import {mdb} from "@/services/api.service";
-import {$} from '@/core/dom'
 // import {createContent, switchPages, getPage} from "@/modules/new.card.functions";
 
 
@@ -9,23 +9,17 @@ export class Popular extends Component {
     static url = 'movie/popular'
     static id = 'popular'
 
-
-
     constructor(id, loader) {
         super (id);
         this.loader = loader
     }
 
     init() {
-
-        // setTimeout(() => !this.$el.classList.contains('hidden') && this.onShow(), 0);
-        setTimeout(() => !this.isHidden() && this.onShow(), 0);
-
+        setTimeout(() => !this.$el.isHidden() && this.onShow(), 0);
         this.pagination.on('click', event => switchPages.bind(this)(event, Popular.url, Popular.id));
     }
     
     onShow() {
-        console.log(this)
         createContent.bind(this)(Popular.url, getPage(Popular.id), Popular.id)
     }
 
@@ -40,15 +34,14 @@ async function createContent(url, page, id) {
     const data = await mdb.fetchCards(url, page);
     console.log(data)
     const html = data.results.map(movie => render(movie));
-    this.$el.querySelector('.container')
-        .insertAdjacentHTML('beforeend', html.join(' '));
+    this.container.insert(html.join(''), 'beforeend');
     this.pagination.innerHTML = createPagination(data.total_pages, getPage(id), id);
     this.loader.hide();
 }
 
 async function switchPages(event, url, id) {
     const target = $(event.target)
-    if (target.hasClass('pagination__link') && target.noClass('pagination__dots')) {
+    if (target.hasClass('pagination__link')) {
         const page = target.innerText;
         this.container.clear();
         this.pagination.clear();

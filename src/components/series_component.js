@@ -13,11 +13,11 @@ export class SeriesComponent extends Component {
 
     onShow() {
         // this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, this.index());
-        this.$el.querySelector(".pagination").innerHTML = createPagination(15, 1, 'series');
+        this.$el.find(".pagination").innerHTML = createPagination(15, 1, 'series');
     }
 
     onHide() {
-        this.$el.querySelector(".pagination").innerHTML = '';
+        this.$el.find(".pagination").innerHTML = '';
     }
 
 }

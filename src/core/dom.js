@@ -50,10 +50,6 @@ class Dom {
 				return this.$el.querySelectorAll(selector)
 		}
 
-		getCoordinates() {
-				return this.$el.getBoundingClientRect()
-		}
-
 		css(styles = {}) {
 
 				Object.keys(styles).forEach(key => {
@@ -64,6 +60,18 @@ class Dom {
 
 		addClass(className) {
 				return this.$el.classList.add(className)
+		}
+
+		removeClass(className) {
+				this.$el.classList.remove(className)
+		}
+
+		insert(node, where) {
+				return this.$el.insertAdjacentHTML(where, node)
+		}
+
+		hide() {
+				return this.$el.classList.add('hidden')
 		}
 
 		get innerText() {
@@ -82,14 +90,18 @@ class Dom {
 				return this.$el.classList.contains('hidden');
 		}
 
-		removeClass(className) {
-				this.$el.classList.remove(className)
+		toggle(className) {
+				return this.$el.classList.toggle(className);
 		}
+
+		remove() {
+				return this.$el.remove();
+		}
+
 
 		get data() {
 				return this.$el.dataset
 		}
-
 }
 
 // чтобы не писать каждый раз new Dom.create(), а сразу писать методы
