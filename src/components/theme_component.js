@@ -4,7 +4,6 @@ import {$} from "@/core/dom";
 export class ThemeComponent extends Component {
     constructor (id) {
         super(id);
-        this.body = $(document.body)
     }
 
     init() {
@@ -16,7 +15,7 @@ export class ThemeComponent extends Component {
 function themeHandler() {
 
     this.$el.toggle('toggler_active');
-    this.body.toggle('dark-theme');
+    $(document.body).toggle('dark-theme');
 
     localStorage.getItem('themePrefered') === 'dark'
       ? localStorage.setItem('themePrefered', 'light')
@@ -27,6 +26,6 @@ function setThemeAfterReload() {
 
     if (localStorage.getItem('themePrefered') === 'dark' ) {
         this.$el.addClass('toggler_active');
-        this.body.addClass('dark-theme');
+        $(document.body).addClass('dark-theme');
     }
 }
