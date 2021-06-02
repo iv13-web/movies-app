@@ -1,0 +1,39 @@
+.container
+  display: flex
+  flex-wrap: wrap
+
+.cardd
+  display: flex
+  flex-direction: column
+  position: relative
+  width: calc(50% - 10px)
+  margin-bottom: 2.4rem
+
+  &:nth-child(2n-1)
+    margin-right: 2rem
+
+  &__img
+    border-radius: 16px
+    margin-bottom: 6px
+    min-height: 25rem
+  &__text
+    color: #1b1d1d
+    font-size: 14px
+    text-align: center
+    line-height: 1.2
+    font-weight: 500
+  &__rating
+    text-align: center
+    position: absolute
+    top: 4px
+    left: -4px
+    background-color: #257d01
+    color: #fff
+    font-size: 1rem
+    font-weight: 600
+    padding: 4px 0
+    border-radius: 6px
+    z-index: 2
+    letter-spacing: .1em
+    width: 2.6rem
+    overflow: hidden
