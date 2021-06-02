@@ -3,6 +3,7 @@ import {createContent, getPageURL, openModal, switchPages} from '../modules/card
 
 export class Top250Component extends Component {
 
+
     constructor(id, loader) {
         super (id);
         this.loader = loader;
@@ -11,17 +12,16 @@ export class Top250Component extends Component {
     init() {
      // setTimeout чтобы загружались фильмы, если юзер остался на этом табе и перезагрузил страницу
         setTimeout(() => {
-            if (!this.$el.classList.contains('hidden')) {
-                this.onShow();
-            }
+            if (!this.isHidden(this.$el)) this.onShow();
         }, 0);
 
-        this.container.addEventListener('click', event => {
-            openModal.bind(this)('/top250/page', event);
+        this.container.on('click', event => {
+            openModal.bind(this)('top250', event);
             // сюда можно добавить функции для сохранения в избранное
         });
-        this.pagination.addEventListener('click', event => {
-            switchPages.bind(this)(getPageURL('/top250/page', event));
+        
+        this.pagination.on('click', event => {
+            switchPages.bind(this)(getPageURL('top250', event));
         });
     }
 

@@ -1,23 +1,23 @@
+import {$} from '@/core/dom'
+
 export class Component {
 
     constructor (id) {
         this.$el = document.getElementById(id);
-        this.container = this.$el.querySelector('.container');
-        this.pagination = this.$el.querySelector('.pagination');
-        // this.a = 4
+        this.container = $(this.$el.querySelector('.container'));
+        this.pagination = $(this.$el.querySelector('.pagination'));
         this.init();
     }
 
     init() {
 
-        
     } 
 
     onShow() {
 
     }
 
-    onHide() {   
+    onHide() {
 
     }
 
@@ -37,6 +37,10 @@ export class Component {
     
     getFromlocalStorage(key) {
         return JSON.parse(localStorage.getItem(key));
+    }
+
+    isHidden() {
+        return this.$el.classList.contains('hidden');
     }
 
     // Development method

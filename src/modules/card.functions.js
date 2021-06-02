@@ -17,27 +17,24 @@ export async function createContent (url) {
 
 // url по умолчанию можно брать из localStorage
 export async function switchPages(url) {
-    
     this.$el.querySelector('.container').innerHTML = '';
     createContent.bind(this)(url);
 }
 
 export function getPageURL(url, event) {
-
     try {
         if (event.target && event.target.classList.contains('pagination__link')) {
-            return `${url}${event.target.innerText}.json`;
+            return `/${url}/page${event.target.innerText}.json`;
         }
         if (event.target && event.target.closest('.card').dataset.id) {
             let pageNumber = document.querySelector('.pagination__link_active').innerText;
-            return `${url}${pageNumber}.json`;
+            return `/${url}/page${pageNumber}.json`;
         }
     } catch (e){}
 }
 
 // Для поиска конкретного json-а для модалки
 export async function getJSON(url, event) {
-
     if (event.target && event.target.closest('.card').dataset.id) {
         const id = event.target.closest('.card').dataset.id;
         const fbData = await fbApiService.fetchCards(getPageURL(url, event));
@@ -48,7 +45,6 @@ export async function getJSON(url, event) {
 }
 
 export async function openModal(url, event) {
-
     if (event.target && event.target.dataset.act !== 'trailer' ) {
         this.modal = new MovieCardModal();
         this.loader.show();
