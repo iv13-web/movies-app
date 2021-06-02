@@ -1,57 +1,29 @@
-import {fbApiService} from '../services/api.service'
-import {transformFbService} from '../services/transform_fb.service'
-import {cardService} from '../services/card.service'
-import {MovieCardModal} from '../components/movie_modal_component'
+import {$} from "@/core/dom";
+import {mdb} from "@/services/api.service";
+import {Card} from "@/components/card_component";
 
-
-export async function createContent (url) {
-    this.loader.show();
-    const fbData = await fbApiService.fetchCards(url);
-    let top250Movies = transformFbService.fbObjectToArray(fbData);
-    top250Movies = cardService.sortByRatingFromTop(top250Movies);
-    const html = top250Movies.map(movie => cardService.render(movie));
-    this.loader.hide();
-    this.$el.querySelector('.container')
-      .insertAdjacentHTML('beforeend', html.join(' '));
+export async function createContent(url, page, id) {
+		const card = new Card()
+		this.loader.show();
+		const data = await mdb.fetchCards(url, page);
+		const html = data.results.map(movie => card.render(movie)).join('');
+		this.container.insert(html, 'beforeend');
+		this.pagination.innerHTML = createPagination(data.total_pages, getPage(id), id);
+		this.loader.hide();
 }
 
-// url по умолчанию можно брать из localStorage
-export async function switchPages(url) {
-    this.$el.querySelector('.container').innerHTML = '';
-    createContent.bind(this)(url);
+export async function switchPages(event, url, id) {
+		const target = $(event.target)
+		if (target.hasClass('pagination__link')) {
+				const page = target.innerText;
+				this.container.clear();
+				this.pagination.clear();
+				createContent.bind(this)(url, page, id);
+				localStorage.setItem(id, JSON.stringify(page))
+		}
 }
 
-export function getPageURL(url, event) {
-    try {
-        if (event.target && event.target.classList.contains('pagination__link')) {
-            return `/${url}/page${event.target.innerText}.json`;
-        }
-        if (event.target && event.target.closest('.card').dataset.id) {
-            let pageNumber = document.querySelector('.pagination__link_active').innerText;
-            return `/${url}/page${pageNumber}.json`;
-        }
-    } catch (e){}
-}
-
-// Для поиска конкретного json-а для модалки
-export async function getJSON(url, event) {
-    if (event.target && event.target.closest('.card').dataset.id) {
-        const id = event.target.closest('.card').dataset.id;
-        const fbData = await fbApiService.fetchCards(getPageURL(url, event));
-        const list = transformFbService.fbObjectToArray(fbData);
-        const json = list.filter(movie => movie.firebaseId === id );
-        return json[0];
-    }
-}
-
-export async function openModal(url, event) {
-    if (event.target && event.target.dataset.act !== 'trailer' ) {
-        this.modal = new MovieCardModal();
-        this.loader.show();
-        const json = await getJSON(url, event);
-        this.loader.hide();
-        this.modal.create(json);
-        document.querySelector('body')
-          .classList.add('stop-scroll');
-    }
+export function getPage(id) {
+		if (localStorage.getItem(id)) return +JSON.parse(localStorage.getItem(id))
+		else return 1
 }
