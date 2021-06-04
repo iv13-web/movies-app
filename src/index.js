@@ -19,8 +19,8 @@ const nav = new NavComponent('nav');
 
 
 
-const latest = new Latest('latest', loader);
-const popular = new Popular('popular', loader);
+const latest = new Latest('latest', 'movie/now_playing', loader);
+const popular = new Popular('popular', 'movie/popular', loader);
 
 
 

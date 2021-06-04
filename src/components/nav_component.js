@@ -45,7 +45,8 @@ function setActiveTabAfterReload() {
         tab.classList.remove('nav__link_active')
     })
 
-    const acitveTabs = Array.from(document.querySelectorAll('.nav__link'))
+    // const acitveTabs = Array.from(document.querySelectorAll('.nav__link'))
+    const acitveTabs = [...document.querySelectorAll('.nav__link')]
     const acitveTab = acitveTabs.find(link => link.dataset.name === localStorage.getItem('lastSelected'))
     acitveTab.classList.add('nav__link_active')
 }

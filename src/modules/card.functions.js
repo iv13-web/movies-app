@@ -1,24 +1,24 @@
-import {$} from "@/core/dom";
-import {mdb} from "@/services/api.service";
-import {Card} from "@/components/card_component";
+import {$} from "@/core/dom"
+import {mdb} from "@/services/api.service"
+import {Card} from "@/components/card_component"
 
 export async function createContent(url, page, id) {
 		const card = new Card()
-		this.loader.show();
-		const data = await mdb.fetchCards(url, page);
-		const html = data.results.map(movie => card.render(movie)).join('');
-		this.container.insert(html, 'beforeend');
-		this.pagination.innerHTML = createPagination(data.total_pages, getPage(id), id);
-		this.loader.hide();
+		this.loader.show()
+		const data = await mdb.fetchCards(url, page)
+		const html = data.results.map(movie => card.render(movie)).join('')
+		this.container.insert(html, 'beforeend')
+		this.pagination.innerHTML = createPagination(data.total_pages, getPage(id), id)
+		this.loader.hide()
 }
 
 export async function switchPages(event, url, id) {
 		const target = $(event.target)
 		if (target.hasClass('pagination__link')) {
-				const page = target.innerText;
-				this.container.clear();
-				this.pagination.clear();
-				createContent.bind(this)(url, page, id);
+				const page = target.innerText
+				this.container.clear()
+				this.pagination.clear()
+				await createContent.call(this, url, page, id)
 				localStorage.setItem(id, JSON.stringify(page))
 		}
 }

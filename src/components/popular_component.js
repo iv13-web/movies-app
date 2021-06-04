@@ -1,15 +1,13 @@
-import {Component} from '@/core/component'
-import {createContent, switchPages, getPage} from '@/modules/card.functions'
 import {$} from "@/core/dom";
+import {Component} from '@/core/component'
 import {mdb} from "@/services/api.service";
+import {createContent, switchPages, getPage} from '@/modules/card.functions'
 
 export class Popular extends Component {
 
-    constructor(id, loader) {
-        super (id)
+    constructor(id, url, loader) {
+        super (id, url)
         this.loader = loader
-        this.url = 'movie/popular'
-        this.id = 'popular'
     }
 
     init() {

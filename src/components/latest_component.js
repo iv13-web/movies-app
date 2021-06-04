@@ -3,11 +3,9 @@ import {createContent, switchPages, getPage} from '@/modules/card.functions'
 
 export class Latest extends Component {
 
-    constructor(id, loader) {
-        super (id);
+    constructor(id, url, loader) {
+        super (id, url);
         this.loader = loader
-        this.url = 'movie/now_playing'
-        this.id = 'latest'
     }
 
     init() {

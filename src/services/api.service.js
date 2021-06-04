@@ -25,7 +25,7 @@ class Api {
 
     async getImages(type, id) {
         try {
-            const response = await fetch(this.baseUrl + `${type}/${id}/images?${this.token}&language=ru`);
+            const response = await fetch(this.baseUrl + `${type}/${id}/images?${this.token}&language=en`);
             const data = await response.json();
             return data.posters
         } catch (e) {
@@ -76,7 +76,7 @@ class Api {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/credits?${this.token}&language=ru`);
             const data = await response.json();
-            return data.cast
+            return data
         } catch (e) {
             console.log('сбой сервера getCast');
         }

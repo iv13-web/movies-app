@@ -2,8 +2,11 @@ import {$} from '@/core/dom'
 
 export class Component {
 
-    constructor (id) {
+    constructor (id, url) {
         this.$el = $(document.getElementById(id));
+        this.id = id
+        this.url = url
+
         this.container = this.$el.find('.container');
         this.pagination = this.$el.find('.pagination');
         this.init();
