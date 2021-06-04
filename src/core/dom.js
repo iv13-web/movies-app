@@ -54,8 +54,12 @@ class Dom {
 				return !this.$el.classList.contains(className)
 		}
 
-		isHidden() {
-				return this.$el.classList.contains('hidden');
+		hasParent(className) {
+				return this.$el.parentElement.classList.contains(className)
+		}
+
+		isVisible() {
+				return ! this.$el.classList.contains('hidden');
 		}
 
 		toggle(className) {
@@ -72,6 +76,10 @@ class Dom {
 
 		get innerText() {
 				return this.$el.innerText
+		}
+
+		get id() {
+				return this.$el.dataset.id
 		}
 }
 

@@ -1,1 +1,0 @@
-document.querySelector(".burger").addEventListener("click",(()=>{document.querySelector(".burger").classList.toggle("burger_active")}));

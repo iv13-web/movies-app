@@ -1,101 +1,65 @@
-.card
-  position: relative
-  padding: 1.6rem 0 
+.container
   display: flex
-  color: #000
-  
-  &:after
-    +pseudo
-    left: -1.6rem
-    bottom: 0
-    height: 1px
-    width: calc(100% + 2.8rem)
-    background-color: $border-color
+  flex-wrap: wrap
 
-  &__poster
-    flex-shrink: 0
-    height: 96px
-    display: inline-block
-    position: relative 
-    margin-right: 1.2rem
+.card
+  display: flex
+  flex-direction: column
+  position: relative
+  width: calc(50% - 10px)
+  margin-bottom: 2.4rem
 
-    img 
-      height: 96px
+  i
+    position: absolute
+    right: 8px
+    top: 2px
+    font-size: 24px
+    z-index: 1
+    color: #ffcf11
 
+    &:after
+      position: absolute
+      content: ""
+      height: 16px
+      width: 24px
+      background: black
+      top: 0
+      right: 0
+      z-index: -1
+      bottom: 0
+      left: 0
+      margin: auto
+      border-radius: 5px
+      box-shadow: 0 0 5px 3px #8181815e
+
+
+  &:nth-child(2n-1)
+    margin-right: 2rem
+
+  &__img
+    border-radius: 16px
+    margin-bottom: 6px
+    min-height: 25rem
+    box-shadow: 0 0 6px 4px #b7b7b75e
+
+  &__text
+    color: #1b1d1d
+    font-size: 14px
+    text-align: center
+    line-height: 1.2
+    font-weight: 500
   &__rating
+    text-align: center
     position: absolute
     top: 4px
-    left: -8px
+    left: -4px
     background-color: #257d01
     color: #fff
     font-size: 1rem
     font-weight: 600
-    padding: 4px
-    border-radius: 2px
+    padding: 4px 0
+    border-radius: 6px
     z-index: 2
     letter-spacing: .1em
-    width: 2.6rem
+    width: 3rem
     overflow: hidden
-
-  &__body
-    display: flex
-    flex-shrink: 0
-    flex-direction: column
-    justify-content: space-between
-    max-width: 20rem
-
-
-  &__title
-    font-size: 1.6rem
-    font-weight: 500
-    color: #000
-    max-width: 18rem
-    margin-bottom: 4px
-
-  &__original-title
-    font-size: 1rem
-    color: #333
-    margin-bottom: 4px
-  &__date
-    font-size: 1.2rem
-    color: #333
-    margin-bottom: 4px
-  
-
-
-  &__additional
-    font-size: 1.2rem
-    color: #777
-    margin-bottom: 4px
-    
-  &__bottom-button
-    color: #fff
-    padding: 4px 0
-    font-size: 1.2rem
-    border-radius: 4px
-    text-align: center
-    font-weight: 600
-    background: linear-gradient(to left, #2cb530, #4d95ef)
-    width: 18rem
-  
-  &__save-buttons
-    width: 100%
-    justify-content: flex-end
-    display: flex
-
-    .bookmark
-      margin-right: 1.2rem
-      cursor: pointer
-    .seen
-      cursor: pointer
-    .additions
-      align-self: flex-end
-      position: absolute
-      margin-right: 2px
-      cursor: pointer
-
-
-
-
-
-    

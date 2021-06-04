@@ -3,22 +3,21 @@ import {createContent, switchPages, getPage} from '@/modules/card.functions'
 
 export class Latest extends Component {
 
-    static url = 'movie/now_playing'
-    static id = 'latest'
-
     constructor(id, loader) {
         super (id);
         this.loader = loader
+        this.url = 'movie/now_playing'
+        this.id = 'latest'
     }
 
     init() {
-        setTimeout(() => ! this.$el.isHidden() && this.onShow(), 0);
+        setTimeout(() => this.$el.isVisible() && this.onShow(), 0);
     }
 
     onShow() {
-        createContent.bind(this)(Latest.url, getPage(Latest.id), Latest.id)
+        createContent.call(this, this.url, getPage(this.id), this.id)
         this.pagination.on('click', event => {
-            switchPages.bind(this)(event, Latest.url, Latest.id)
+            switchPages.call(this, event, this.url, this.id)
         });
     }
 

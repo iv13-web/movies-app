@@ -5,14 +5,17 @@ export class Card  {
 				if (movie.poster_path) {
 						// проверка на отсутствие рейтинга
 						const rating = movie.vote_average
-								? `<span class="cardd__rating">${movie.vote_average.toFixed(1)}</span>`
+								? `<span class="card__rating">${movie.vote_average.toFixed(1)}</span>`
 								: ''
 
 						return `
-            <div class="cardd" data-id="${movie.id}">
-                <img class="cardd__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="">
-                ${rating}
-                <p class="cardd__text">${movie.title}</p>
+            <div class="card" data-id="${movie.id}">
+									<div class="play-btn">
+                		<i class="fab fa-youtube play"></i>
+									</div>
+								<img class="card__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}">
+								${rating}
+								<p class="card__text">${movie.title}</p>
             </div>
         `
 				}

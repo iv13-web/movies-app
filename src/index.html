@@ -47,10 +47,10 @@
         </p>
         <button class="welcome__button">Начать</button>
     </div>
+
     <header class="page-header">
         <div class="container">
             <div class="burger"></div>
-
             <div class="logo">
 
                 <svg width="113" height="26" viewBox="0 0 113 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -79,15 +79,13 @@
                     <path d="M21.6385 12.7717H2.36151C2.10699 12.7717 1.90082 12.5656 1.90082 12.3112V10.8885C1.90082 10.6342 2.10699 10.428 2.36151 10.428H21.6385C21.893 10.428 22.0992 10.6342 22.0992 10.8885V12.3112C22.0992 12.5656 21.893 12.7717 21.6385 12.7717Z" fill="#B790DC"/>
                 </svg>
             </div>
-            
             <div class="toggler" id="theme-toggler">
                 <div class="toggler__sun"></div>
                 <div class="toggler__moon"></div>
             </div>
-            
-
         </div>
     </header>
+
     <div class="nav-wrapper">
         <nav class="nav" id="nav">
             <a class="nav__link" data-name="latest" href="">Новинки</a>
@@ -114,60 +112,51 @@
 
 
 
-
-
-
     <div class="hidden" id="series" data-type="catalog">
-        <h1>Сериалы</h1>
-
         <div class="container">
-
+            <div class="cardd">
+                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="cardd__rating">7.2</span>
+                <p class="cardd__text">Первый мститель: проивостояние</p>
+            </div>
             <div class="cardd">
                 <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
                 <span class="cardd__rating">7.2</span>
                 <p class="cardd__text">Первый мститель: проивостояние</p>
             </div>
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
+            <div class="modal__overlay" data-act="close">
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
+                <div class="modal__window">
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
+                        <div class="modal__window-top">
+                            <img class="modal__img" src="./assets/icons/test.jpg" alt="">
+                        </div>
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
+                    <div class="modal__window-wrapper">
+                        <div class="modal__window-bottom">
+                            <p class="modal__description">впыарварврврвар</p>
+                            <p class="modal__heading">Кадры из фильма</p>
+                            <div class="swiper-container modal__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide"><img loading="lazy" src="./assets/icons/test.jpg" alt=""></div>
 
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <p class="modal__heading">Дополнительные данные</p>
+                            <div class="modal__bottom-wrapper">
+                                <div class="modal__extra-info"><p>Режиссер</p><p></p></div>
+                                <div class="modal__extra-info"><p>Сценарист</p><p></p></div>
+                                <div class="modal__extra-info"><p>Премьера</p><p></p></div>
+                                <div class="modal__extra-info"> <p>MPAA</p><p></p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
@@ -223,5 +212,6 @@
     </div>
     <script src="./plugins/pagination.js"></script>
     <script src="./plugins/swiper-bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/97780d887f.js" crossorigin="anonymous"></script>
 </body>
 </html>
