@@ -85,169 +85,200 @@
             </div>
         </div>
     </header>
-
     <div class="nav-wrapper">
         <nav class="nav" id="nav">
             <a class="nav__link" data-name="latest" href="">Новинки</a>
+            <a class="nav__link" data-name="topMovies" href="">Топ-фильмы</a>
             <a class="nav__link nav__link_active" data-name="popular" href="">Популярные</a>
-            <a class="nav__link" data-name="schedule" href="">Афиша</a>
-            <a class="nav__link" data-name="series" href="">Сериалы</a>
-            <a class="nav__link" data-name="top250" href="">Топ-250</a>
+            <a class="nav__link" data-name="series" href="">Cериалы</a>
+            <a class="nav__link" data-name="upcoming" href="">В прокате</a>
             <a class="nav__link" data-name="about" href="">О проекте</a>
+            <a class="nav__link" data-name="test" href="">Тест</a>
         </nav>
     </div>
-
 
     <div class="hidden" id="latest" data-type="catalog" >
         <div class="container"></div>
         <div class="pagination" data-id="latest"></div>
     </div>
 
+    <div class="hidden" id="topMovies" data-type="catalog">
+        <div class="container"></div>
+        <div class="pagination" data-id="topMovies"></div>
+    </div>
 
     <div class="" id="popular" data-type="catalog">
         <div class="container"></div>
         <div class="pagination" data-id="popular"></div>
     </div>
 
-
-
-
     <div class="hidden" id="series" data-type="catalog">
-        <div class="container">
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-            <div class="cardd">
-                <img class="cardd__img" src="./assets/icons/Rectangle%205.png" alt="">
-                <span class="cardd__rating">7.2</span>
-                <p class="cardd__text">Первый мститель: проивостояние</p>
-            </div>
-
-
-
-            <div class="modal__overlay" data-act="close">
-                <div class="modal__window">
-                        <div class="modal__window-top">
-                            <img class="modal__img" src="./assets/icons/test2.jpg" alt="">
-                            <div class="modal__additions">
-                                <span class="modal__additions-title">Извержение</span>
-                                <span>Год:&nbsp;</span>
-                                <span>Время:&nbsp;</span>
-                                <span>Страна:&nbsp;</span>
-                                <span>Рейтинг:&nbsp;</span>
-                                <span>Голоса:&nbsp;</span>
-                            </div>
-                        </div>
-                        <div class="modal__buttons">
-                            <div class="modal__buttons_like"><i class="far fa-heart"></i>Сохранить</div>
-                            <div class="modal__buttons_seen"><i class="fas fa-eye"></i>Отметить</div>
-                        </div>
-                    <div class="modal__window-wrapper">
-                        <div class="modal__window-bottom">
-                            <p class="modal__heading-plot">Сюжет</p>
-                            <p class="modal__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cum dolorum iure iusto laudantium, mollitia nam nobis sapiente suscipit.</p>
-                            <p class="modal__heading-cast">Актеры</p>
-                            <div class="modal__slider">
-                                <div class="swiper-container actors__slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                            <p class="modal__heading-creators">Авторы</p>
-                            <div class="modal__slider">
-                                <div class="swiper-container creators__slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                            <p class="modal__heading-similar">Похожие фильмы</p>
-                            <div class="modal__slider">
-                                <div class="swiper-container similar__slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+        <div class="container"></div>
         <div class="pagination" data-id="series"></div>
     </div>
 
-
-    <div class="hidden" id="top250" data-type="catalog">
+    <div class="hidden" id="upcoming" data-type="catalog">
         <div class="container"></div>
-        <div class="pagination" data-id="top250"></div>
+        <div class="pagination" data-id="upcoming"></div>
     </div>
 
 
-    <div class="schedule hidden" id="schedule">
-        <h1>Афиша</h1>
+
+
+    <div class="hidden" id="test" data-type="catalog">
+        <div class="container">
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+            <div class="card">
+                <img class="card__img" src="./assets/icons/Rectangle%205.png" alt="">
+                <span class="card__rating">7.2</span>
+                <p class="card__text">Первый мститель: проивостояние</p>
+            </div>
+
+            <div class="modal" data-act="close">
+                <div class="modal__window">
+                    <div class="modal__window-top">
+                        <img class="modal__img" src="./assets/icons/test2.jpg" alt="">
+                        <div class="modal__additions">
+                            <span class="modal__additions-title">Название</span>
+                            <span class="modal__additions-line">Год:&nbsp</span>
+                            <span class="modal__additions-line">Время:&nbsp</span>
+                            <span class="modal__additions-line">Страна:&nbsp</span>
+                            <span class="modal__additions-line">Рейтинг:&nbsp</span>
+                            <span class="modal__additions-line">Голоса:&nbsp</span>
+                        </div>
+                    </div>
+                    <div class="buttons-container">
+                        <div class="button button_like"><i class="far fa-heart button__icon"></i>Сохранить</div>
+                        <div class="button button_seen"><i class="fas fa-eye button__icon"></i>Отметить</div>
+                    </div>
+
+                    <div class="modal__window-bottom">
+                        <div class="modal__section">
+                            <p class="modal__heading">Сюжет</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cum dolorum iure iusto laudantium, mollitia nam nobis sapiente suscipit.</p>
+                        </div>
+                        <div class="modal__section">
+                            <p class="modal__heading">Актеры</p>
+                            <div class="modal__slider">
+                                <div class="swiper-container actors__slider">
+                                    <div class="swiper-wrapper">
+
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="modal__heading">Авторы</p>
+                        <div class="modal__slider">
+                            <div class="swiper-container creators__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="modal__cast-wrapper">
+                                            <img src="./assets/icons/actor.jpg" alt="">
+                                            <p class="modal__cast-name">Натали Портман</p>
+                                            <p class="modal__cast-role">РольРоль</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <p class="modal__heading">Похожие фильмы</p>
+                        <div class="modal__slider">
+                            <div class="swiper-container similar__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="modal__cast-wrapper">
+                                            <img src="./assets/icons/actor.jpg" alt="">
+                                            <p class="modal__cast-name">Натали Портман</p>
+                                            <p class="modal__cast-role">РольРоль</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="pagination" data-id="test"></div>
     </div>
+
+
+
+
+
 
     <div class="about hidden" id="about">
         <h1>О проекте</h1>

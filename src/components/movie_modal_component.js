@@ -31,83 +31,83 @@ export class MovieCardModal {
                         <div class="button button_seen"><i class="fas fa-eye button__icon"></i>Отметить</div>
                     </div>
                   
-                        <div class="modal__window-bottom">
-                            <div class="modal__section">
-                                <p class="modal__heading">Сюжет</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cum dolorum iure iusto laudantium, mollitia nam nobis sapiente suscipit.</p>
-                            </div>
-                            <div class="modal__section">
-                                <p class="modal__heading">Актеры</p>
-                                <div class="modal__slider">
-                                    <div class="swiper-container actors__slider">
-                                        <div class="swiper-wrapper">
+                    <div class="modal__window-bottom">
+                        <div class="modal__section">
+                            <p class="modal__heading">Сюжет</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusamus cum dolorum iure iusto laudantium, mollitia nam nobis sapiente suscipit.</p>
+                        </div>
+                        <div class="modal__section">
+                            <p class="modal__heading">Актеры</p>
+                            <div class="modal__slider">
+                                <div class="swiper-container actors__slider">
+                                    <div class="swiper-wrapper">
+                                    
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="modal__cast-wrapper">
+                                                <img src="./assets/icons/actor.jpg" alt="">
+                                                <p class="modal__cast-name">Натали Портман</p>
+                                                <p class="modal__cast-role">РольРоль</p>
+                                            </div>
+                                        </div>
                                         
-                                            <div class="swiper-slide">
-                                                <div class="modal__cast-wrapper">
-                                                    <img src="./assets/icons/actor.jpg" alt="">
-                                                    <p class="modal__cast-name">Натали Портман</p>
-                                                    <p class="modal__cast-role">РольРоль</p>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="modal__cast-wrapper">
-                                                    <img src="./assets/icons/actor.jpg" alt="">
-                                                    <p class="modal__cast-name">Натали Портман</p>
-                                                    <p class="modal__cast-role">РольРоль</p>
-                                                </div>
-                                            </div>
-                                            <div class="swiper-slide">
-                                                <div class="modal__cast-wrapper">
-                                                    <img src="./assets/icons/actor.jpg" alt="">
-                                                    <p class="modal__cast-name">Натали Портман</p>
-                                                    <p class="modal__cast-role">РольРоль</p>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="swiper-slide">
-                                                <div class="modal__cast-wrapper">
-                                                    <img src="./assets/icons/actor.jpg" alt="">
-                                                    <p class="modal__cast-name">Натали Портман</p>
-                                                    <p class="modal__cast-role">РольРоль</p>
-                                                </div>
-                                            </div>                              
-                                        </div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <p class="modal__heading">Авторы</p>
-                            <div class="modal__slider">
-                                <div class="swiper-container creators__slider">
-                                    <div class="swiper-wrapper">
                                         <div class="swiper-slide">
                                             <div class="modal__cast-wrapper">
                                                 <img src="./assets/icons/actor.jpg" alt="">
                                                 <p class="modal__cast-name">Натали Портман</p>
                                                 <p class="modal__cast-role">РольРоль</p>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                            <p class="modal__heading">Похожие фильмы</p>
-                            <div class="modal__slider">
-                                <div class="swiper-container similar__slider">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
+                                        </div>                              
                                     </div>
                                     <div class="swiper-pagination"></div>
                                 </div>
                             </div>
                         </div>
+                        
+                        <p class="modal__heading">Авторы</p>
+                        <div class="modal__slider">
+                            <div class="swiper-container creators__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="modal__cast-wrapper">
+                                            <img src="./assets/icons/actor.jpg" alt="">
+                                            <p class="modal__cast-name">Натали Портман</p>
+                                            <p class="modal__cast-role">РольРоль</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                        <p class="modal__heading">Похожие фильмы</p>
+                        <div class="modal__slider">
+                            <div class="swiper-container similar__slider">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="modal__cast-wrapper">
+                                            <img src="./assets/icons/actor.jpg" alt="">
+                                            <p class="modal__cast-name">Натали Портман</p>
+                                            <p class="modal__cast-role">РольРоль</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
         `)

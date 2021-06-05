@@ -2,35 +2,32 @@ import {$} from '@/core/dom'
 
 export class Component {
 
-    constructor (id, url) {
-        this.$el = $(document.getElementById(id));
+    constructor (id) {
+        this.$el = $(document.getElementById(id))
         this.id = id
-        this.url = url
+        this.prepare()
+        this.init()
+    }
 
-        this.container = this.$el.find('.container');
-        this.pagination = this.$el.find('.pagination');
-        this.init();
+    prepare() {
     }
 
     init() {
-
-    } 
+    }
 
     onShow() {
-
     }
 
     onHide() {
-
     }
 
     hide() {
-        this.$el.addClass('hidden');
-        this.onHide();
+        this.$el.addClass('hidden')
+        this.onHide()
     }
 
     show() {
-        this.$el.removeClass('hidden');
-        this.onShow();
+        this.$el.removeClass('hidden')
+        this.onShow()
     }
 }
