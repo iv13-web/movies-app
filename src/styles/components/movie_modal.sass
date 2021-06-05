@@ -1,49 +1,24 @@
 .modal
-  &__overlay
-    top: 0
-    right: 0
-    left: 0
-    bottom: 0
-    z-index: 999
-    background-color: rgba(0, 0, 0, .8)
-    position: fixed
-    overflow: scroll
 
-  &__buttons
-    display: flex
-    justify-content: space-between
-    padding: 0 12px
-    margin-bottom: 3rem
-    &_like
-      +modal-btn
-    i
-      color: #5b5b5b
-      margin-right: 10px
-      font-size: 24px
+  +middle-position(fixed)
+  z-index: 999
+  background-color: rgba(0, 0, 0, .8)
+  overflow: scroll
 
-    &_seen
-      +modal-btn
-      i
-        color: #5b5b5b
-        margin-right: 10px
-        font-size: 24px
+
 
   &__additions
     display: flex
     flex-direction: column
-    align-items: flex-start
     font-size: 12px
     color: #555
-    justify-content: space-between
-    width: 15rem
-    height: 22rem
+
     &-title
       font-size: 20px
       font-weight: 700
-
-
-
-
+      margin-bottom: 1em
+    &-line
+      margin-bottom: 1em
 
   &__window
     z-index: 1000
@@ -59,52 +34,34 @@
 
 
 
-    &-wrapper
-      padding: 0 1rem
-
-
     &-top
       display: flex
-      justify-content: space-between
       margin-bottom: 3rem
       padding: 50px 12px 0
 
       & img
         border-radius: 12px
         width: 17rem
-        //height: 22rem
+        margin-right: 3rem
+    &-bottom
+      padding: 0 1rem
 
-  &__description
-    text-align: left
-    margin-bottom: 2rem
-    line-height: 1.4
-    color: #000
 
 
   &__heading
-    &-plot
-      +modal-heading
-      &:after //можно обернуть в функцию и прокидывать width
-        width: 80%
-        +modal-heading-after
-    &-creators,
-    &-cast
-      +modal-heading
-      &:after //можно обернуть в функцию и прокидывать width
-        width: 77%
-        +modal-heading-after
-    &-similar
-      +modal-heading
-      &:after //можно обернуть в функцию и прокидывать width
-        width: 48%
-        +modal-heading-after
+    font-size: 2rem
+    font-weight: 700
+    text-align: left
+    margin-bottom: 1rem
+    position: relative
+
+  &__section
+    margin-bottom: 3rem
 
   &__cast
     &-name
-      color: #000
       font-size: 14px
     &-role
-      color: #000
       font-size: 12px
     &-wrapper
       min-width: 22rem

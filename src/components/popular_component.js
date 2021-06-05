@@ -22,7 +22,6 @@ export class Popular extends Component {
             cardHandler.call(this, event)
 
         })
-
     }
 
     onShow() {
@@ -43,6 +42,7 @@ async function cardHandler (event) {
     if (target.hasParent('card')) {
         this.loader.show()
         const data = await mdb.getFullData('movie', id)
+        console.log(data)
         MovieCardModal.create(data)
         this.loader.hide()
     }

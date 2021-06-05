@@ -92,9 +92,8 @@ module.exports = {
     dist во время работы будет пустой, все файлы будут в оперативке */
     devServer : {
         port: 4200,
-        contentBase: path.join(__dirname, 'src/assets')
-
-        // hot: isDev
+        contentBase: path.join(__dirname, 'src/assets'),
+        hot: isDev
     },
 
     plugins: [
