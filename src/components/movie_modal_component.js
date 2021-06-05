@@ -5,7 +5,6 @@ export class MovieCardModal  {
     static create(data, type) {
 
         const body = $(document.querySelector('body'))
-
         const title = type === 'movie' ? data.details.title : data.details.name
 
 
@@ -15,7 +14,7 @@ export class MovieCardModal  {
         modal.insertAdjacentHTML('afterbegin', `
                 <div class="modal__window">
                     <div class="modal__window-top">
-                        <img class="modal__img" src="./assets/icons/test2.jpg" alt="">
+                        <img class="modal__img" src="https://image.tmdb.org/t/p/w500/${data.details.poster_path}" alt="${title}">
                         <div class="modal__additions">
                             <span class="modal__additions-title">${title}</span>
                             <span class="modal__additions-line">Год:&nbsp</span> 
@@ -40,55 +39,21 @@ export class MovieCardModal  {
                             <div class="modal__slider">
                                 <div class="swiper-container actors__slider">
                                     <div class="swiper-wrapper">
-                                    
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="swiper-slide">
-                                            <div class="modal__cast-wrapper">
-                                                <img src="./assets/icons/actor.jpg" alt="">
-                                                <p class="modal__cast-name">Натали Портман</p>
-                                                <p class="modal__cast-role">РольРоль</p>
-                                            </div>
-                                        </div>                              
+                                        ${getMoviesSlides(data.cast.cast, 'cast')}                   
                                     </div>
                                     <div class="swiper-pagination"></div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <p class="modal__heading">Авторы</p>
-                        <div class="modal__slider">
-                            <div class="swiper-container creators__slider">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="modal__cast-wrapper">
-                                            <img src="./assets/icons/actor.jpg" alt="">
-                                            <p class="modal__cast-name">Натали Портман</p>
-                                            <p class="modal__cast-role">РольРоль</p>
-                                        </div>
+                        <div class="modal__section">
+                            <p class="modal__heading">Авторы</p>
+                            <div class="modal__slider">
+                                <div class="swiper-container creators__slider">
+                                    <div class="swiper-wrapper">
+                                        ${getMoviesSlides(data.cast.crew, 'crew')}  
                                     </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
-                                <div class="swiper-pagination"></div>
                             </div>
                         </div>
                         <p class="modal__heading">Похожие фильмы</p>
@@ -114,7 +79,16 @@ export class MovieCardModal  {
         body.insert(modal,'beforeend')
         document.querySelector('body').classList.add('stop-scroll')
 
-        const swiper = new Swiper('.actors__slider', {
+        new Swiper('.actors__slider', {
+            slidesPerView: 2,
+            spaceBetween: 20,
+            // clickable: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        })
+        new Swiper('.creators__slider', {
             slidesPerView: 2,
             spaceBetween: 20,
             // clickable: false,
@@ -130,15 +104,46 @@ export class MovieCardModal  {
 }
 
 function close(event) {
-
-    document.querySelector('body')
-        .classList.remove('stop-scroll')
-
+    document.querySelector('body').classList.remove('stop-scroll')
     event.target.dataset.act === 'close' && this.remove()
-
-
-    // сделать добавление класса для плавного закрытия, а потом через stetimeout - remove из дом
 }
 
 
+function getMoviesSlides(array, type) {
+    let html = ''
+    array.forEach(person => {
+        const personalData = type === 'cast'
+            ? `<p class="modal__cast-name">${person.character}</p>`
+            : `<p class="modal__cast-name">${person.known_for_department}</p>`
+        if (person.profile_path !== null) {
+            html +=
+                `<div class="swiper-slide">
+                <div class="modal__cast-wrapper">
+                    <img src="https://image.tmdb.org/t/p/w500/${person.profile_path}" alt="">
+                    <p class="modal__cast-name">${person.name}</p>
+                    ${personalData}
+                </div>
+            </div>`
+        }
+    })
+    return html
+
+    // for (let i = 0; i < 5; i++) {
+    //     const personalData = type === 'cast'
+    //         ? `<p class="modal__cast-name">${array[i].character}</p>`
+    //         : `<p class="modal__cast-name">${array[i].known_for_department}</p>`
+    //
+    //     if (array[i].profile_path !== null) {
+    //         html +=
+    //             `<div class="swiper-slide">
+    //             <div class="modal__cast-wrapper">
+    //                 <img src="https://image.tmdb.org/t/p/w500/${array[i].profile_path}" alt="">
+    //                 <p class="modal__cast-name">${array[i].name}</p>
+    //                 ${personalData}
+    //             </div>
+    //         </div>`
+    //         console.log(array[i].a)
+    //     }
+    // }
+}
 
