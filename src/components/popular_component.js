@@ -2,6 +2,7 @@ import {$} from "@/core/dom";
 import {Component} from '@/core/component'
 import {mdb} from "@/services/api.service";
 import {createContent, switchPages, getPage} from '@/modules/card.functions'
+import {MovieCardModal} from "@/components/movie_modal_component";
 
 export class Popular extends Component {
 
@@ -42,7 +43,7 @@ async function cardHandler (event) {
     if (target.hasParent('card')) {
         this.loader.show()
         const data = await mdb.getFullData('movie', id)
-        console.log(data)
+        MovieCardModal.create(data)
         this.loader.hide()
     }
 
@@ -51,7 +52,6 @@ async function cardHandler (event) {
         await mdb.showTrailer('movie', id)
         this.loader.hide()
     }
-
 }
 
 

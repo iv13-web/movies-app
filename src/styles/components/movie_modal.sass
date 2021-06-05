@@ -99,8 +99,6 @@
         width: 48%
         +modal-heading-after
 
-  &__slider
-    margin-bottom: 2rem
   &__cast
     &-name
       color: #000
@@ -109,11 +107,14 @@
       color: #000
       font-size: 12px
     &-wrapper
+      min-width: 22rem
       img
         height: 18rem
         border-radius: 16px
 
-
-.swiper-pagination-bullet-active ,
-.swiper-pagination-bullet
-  background-color: #ffcf11
+.swiper
+  &-wrapper
+    height: 26rem
+  &-pagination-bullet-active ,
+  &-pagination-bullet
+    background-color: #ffcf11
