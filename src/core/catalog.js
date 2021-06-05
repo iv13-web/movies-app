@@ -4,9 +4,10 @@ import {modalHandler} from "@modules/modal.functions";
 
 export class Catalog extends Component {
 
-		constructor(id, url, loader) {
+		constructor(id, url, type, loader) {
 				super(id)
 				this.url = url
+				this.type = type
 				this.loader = loader
 		}
 
@@ -17,7 +18,7 @@ export class Catalog extends Component {
 
 		init() {
 				setTimeout(() => this.$el.isVisible() && this.onShow(), 0)
-				this.container.on('click', event => modalHandler.call(this, event))
+				this.container.on('click', event => modalHandler.call(this, event, this.type))
 				this.pagination.on('click', event => switchPages.call(this, event, this.url, this.id))
 		}
 
@@ -26,6 +27,6 @@ export class Catalog extends Component {
 		}
 
 		onHide() {
-				[this.container,this.pagination].forEach($el => $el.clear())
+				[this.container, this.pagination].forEach($el => $el.clear())
 		}
 }

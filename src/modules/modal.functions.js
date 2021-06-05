@@ -1,16 +1,16 @@
-import {MovieCardModal} from "@/components/movie_modal_component"
 import {$} from "@/core/dom";
 import {mdb} from "@/services/api.service";
+import {MovieCardModal} from "@/components/movie_modal_component"
 
-export async function modalHandler (event) {
+export async function modalHandler (event, type) {
 
 		const target = $(event.target)
 		const id = target.closest('.card').id
 		if (target.hasParent('card')) {
 				this.loader.show()
-				const data = await mdb.getFullData('movie', id)
+				const data = await mdb.getFullData(type, id)
 				console.log(data)
-				MovieCardModal.create(data)
+				MovieCardModal.create(data, type)
 				this.loader.hide()
 		}
 

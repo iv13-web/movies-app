@@ -1,14 +1,13 @@
-export class MovieCardModal {
+import {$} from "@/core/dom";
 
-    static create(json) {
+export class MovieCardModal  {
 
-        // const duration = json.collapse === undefined
-        //     ? 'данных нет'
-        //     : json.collapse.duration[0]
-        //
-        // const screenshots = json.screenshots === undefined
-        //     ? json.frames
-        //     : json.screenshots
+    static create(data, type) {
+
+        const body = $(document.querySelector('body'))
+
+        const title = type === 'movie' ? data.details.title : data.details.name
+
 
         const modal = document.createElement('div')
         modal.classList.add('modal')
@@ -18,7 +17,7 @@ export class MovieCardModal {
                     <div class="modal__window-top">
                         <img class="modal__img" src="./assets/icons/test2.jpg" alt="">
                         <div class="modal__additions">
-                            <span class="modal__additions-title">${json.details.title}</span>
+                            <span class="modal__additions-title">${title}</span>
                             <span class="modal__additions-line">Год:&nbsp</span> 
                             <span class="modal__additions-line">Время:&nbsp</span>
                             <span class="modal__additions-line">Страна:&nbsp</span>
@@ -112,7 +111,8 @@ export class MovieCardModal {
                 </div>
         `)
 
-        document.querySelector('body').insertAdjacentElement('beforeend', modal)
+        body.insert(modal,'beforeend')
+        document.querySelector('body').classList.add('stop-scroll')
 
         const swiper = new Swiper('.actors__slider', {
             slidesPerView: 2,

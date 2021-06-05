@@ -39,7 +39,9 @@ class Dom {
 		}
 
 		insert(node, where) {
-				return this.$el.insertAdjacentHTML(where, node)
+				typeof node === 'string'
+						? this.$el.insertAdjacentHTML(where, node)
+						: this.$el.insertAdjacentElement(where, node)
 		}
 
 		hide() {

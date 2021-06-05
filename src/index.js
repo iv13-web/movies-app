@@ -19,11 +19,11 @@ const loader = new Component('loader')
 const nav = new NavComponent('nav')
 
 
-const latest = new Catalog('latest', 'movie/now_playing', loader)
-const popular = new Catalog('popular', 'movie/popular', loader)
-const upcoming = new Catalog('upcoming','movie/upcoming' , loader)
-const topMovies = new Catalog('topMovies','movie/top_rated' , loader)
-const series = new Catalog('series','tv/popular' , loader)
+const latest = new Catalog('latest', 'movie/now_playing','movie', loader)
+const popular = new Catalog('popular', 'movie/popular', 'movie', loader)
+const upcoming = new Catalog('upcoming','movie/upcoming' , 'movie', loader)
+const topMovies = new Catalog('topMovies','movie/top_rated' , 'movie', loader)
+const series = new Catalog('series','tv/popular' , 'tv', loader)
 
 
 const test = new SeriesComponent('test')
