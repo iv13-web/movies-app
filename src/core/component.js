@@ -22,8 +22,8 @@ export class Component {
     }
 
     hide() {
-        this.$el.addClass('hidden')
         this.onHide()
+        this.$el.addClass('hidden')
     }
 
     show() {

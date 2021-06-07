@@ -6,9 +6,19 @@ export class WelcomeComponent extends Component {
     }
 
     init() {
-        localStorage.getItem('wasVisited') && this.hide();
+        localStorage.getItem('wasVisited')
+            ? this.hide()
+            : this.show()
+    }
+
+    onShow() {
+        this.$el.find('.welcome__button').on('click', btnHandler.bind(this));
+    }
+
+    onHide() {
         const btn = document.querySelector('.welcome__button');
-        btn.addEventListener('click', btnHandler.bind(this));
+        this.$el.find('.welcome__button').off('click', btnHandler)
+
     }
 }
 

@@ -1,5 +1,6 @@
 import {$} from "@/core/dom"
 import {mdb} from "@/services/api.service"
+import {modalHandler, renderModal} from '@/modules/modal.functions'
 
 function renderCard(movie) {
 		if (movie.poster_path) {
@@ -12,13 +13,39 @@ function renderCard(movie) {
 				return `
             <div class="card" data-id="${movie.id}">
 									<div class="play-btn">
-                		<i class="fab fa-youtube play"></i>
+                		<i class="fab fa-youtube" data-type="play"></i>
 									</div>
-								<img class="card__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${title}">
+								<img class="card__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${title}" data-type="card">
 								${rating}
 								<p class="card__text">${title}</p>
             </div>
         `
+		}
+}
+
+export async function cardHandler(event, type) {
+
+		const target = $(event.target)
+		let id
+		if (target.noClass('container')) {
+				id = target.closest('.card').data.id
+		}
+
+		if (target.data.type === 'card') {
+				this.loader.show()
+				const data = await mdb.getFullData(type, id)
+				console.log(data)
+				//----------------------
+				const modal = $(renderModal(data, type))
+				modal.on('click', modalHandler)
+				//----------------------
+				this.loader.hide()
+		}
+
+		if (target.data.type === 'play') {
+				this.loader.show()
+				await mdb.showTrailer('movie', id)
+				this.loader.hide()
 		}
 }
 
@@ -37,7 +64,7 @@ export async function switchPages(event, url, id) {
 				const page = target.innerText
 				this.container.clear()
 				this.pagination.clear()
-				createContent.call(this, url, page, id)
+				createCards.call(this, url, page, id)
 				localStorage.setItem(id, JSON.stringify(page))
 		}
 }
