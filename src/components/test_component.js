@@ -1,6 +1,6 @@
 import {Component} from '../core/component';
 
-export class SeriesComponent extends Component {
+export class TestComponent extends Component {
     constructor(id) {
         super (id);
 

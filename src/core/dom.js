@@ -60,9 +60,7 @@ class Dom {
 		get innerText() {
 				return this.$el.innerText
 		}
-		get id() {
-				return this.$el.dataset.id
-		}
+
 }
 
 export function $(selector) {

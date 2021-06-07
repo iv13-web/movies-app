@@ -5,7 +5,6 @@ class Api {
     }
 
     async fetchCards(url, page) {
-
         try {
             const response = await fetch(this.baseUrl + `${url}?${this.token}&language=ru&page=${page}`);
             return await response.json();
@@ -14,7 +13,7 @@ class Api {
         }
     }
 
-    async getDetails(type, id) {
+    async fetchDetails(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}?${this.token}&language=ru`);
             return await response.json();
@@ -23,7 +22,7 @@ class Api {
         }
     }
 
-    async getImages(type, id) {
+    async fetchImages(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/images?${this.token}&language=en`);
             const data = await response.json();
@@ -33,7 +32,7 @@ class Api {
         }
     }
 
-    async getSimilar(type, id) {
+    async fetchSimilar(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/similar?${this.token}&language=ru`);
             const data = await response.json();
@@ -62,7 +61,7 @@ class Api {
         }
     }
 
-    async getRecommendations(type, id) {
+    async fetchRecommendations(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/recommendations?${this.token}&language=ru`);
             const data = await response.json();
@@ -72,11 +71,10 @@ class Api {
         }
     }
 
-    async getCast(type, id) {
+    async fetchCast(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/credits?${this.token}&language=ru`);
-            const data = await response.json();
-            return data
+            return await response.json();
         } catch (e) {
             console.log('сбой сервера getCast');
         }
@@ -84,22 +82,14 @@ class Api {
 
     async getFullData(type, id) {
         const data = {}
-        const details = await this.getDetails(type, id)
-        const images = await this.getImages(type, id)
-        const similar = await this.getSimilar(type, id)
-        const recommendations = await this.getRecommendations(type, id)
-        const cast = await this.getCast(type, id)
-
-        data.details = (await details)
-        data.images = (await images)
-        data.similar = (await similar)
-
-        data.reccommendations = (await recommendations)
-        data.cast = (await cast)
+        data.details = await this.fetchDetails(type, id)
+        data.images = await this.fetchImages(type, id)
+        data.similar = await this.fetchSimilar(type, id)
+        data.reccommendations = await this.fetchRecommendations(type, id)
+        data.cast = await this.fetchCast(type, id)
 
         return data
     }
-
 }
 
 export const mdb = new Api('https://api.themoviedb.org/3/')

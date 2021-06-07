@@ -1,11 +1,31 @@
 import {$} from "@/core/dom"
 import {mdb} from "@/services/api.service"
-import {Card} from "@/components/card_component"
 
-export async function createContent(url, page, id) {
+function renderCard(movie) {
+		if (movie.poster_path) {
+				// проверка на отсутствие рейтинга
+				const rating = movie.vote_average
+						? `<span class="card__rating">${movie.vote_average.toFixed(1)}</span>`
+						: ''
+
+				const title = movie.title ? movie.title : movie.name
+				return `
+            <div class="card" data-id="${movie.id}">
+									<div class="play-btn">
+                		<i class="fab fa-youtube play"></i>
+									</div>
+								<img class="card__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${title}">
+								${rating}
+								<p class="card__text">${title}</p>
+            </div>
+        `
+		}
+}
+
+export async function createCards(url, page, id) {
 		this.loader.show()
 		const data = await mdb.fetchCards(url, page)
-		const html = data.results.map(movie => Card.render(movie)).join('')
+		const html = data.results.map(renderCard).join('')
 		this.container.insert(html, 'beforeend')
 		this.pagination.innerHTML = createPagination(data.total_pages, getPage(id), id)
 		this.loader.hide()

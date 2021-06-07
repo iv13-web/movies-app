@@ -1,5 +1,5 @@
 import {Component} from "@/core/component";
-import {createContent, getPage, switchPages} from "@modules/card.functions";
+import {createCards, getPage, switchPages} from "@modules/card.functions";
 import {modalHandler} from "@modules/modal.functions";
 
 export class Catalog extends Component {
@@ -23,7 +23,7 @@ export class Catalog extends Component {
 		}
 
 		onShow() {
-				createContent.call(this, this.url, getPage(this.id), this.id)
+				createCards.call(this, this.url, getPage(this.id), this.id)
 		}
 
 		onHide() {
