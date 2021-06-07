@@ -1,6 +1,7 @@
 import {$} from "@/core/dom";
 import {mdb} from "@/services/api.service";
 import {MovieCardModal} from "@/components/movie_modal_component"
+import {renderModal} from "@/components/movie_modal_component";
 
 export async function modalHandler (event, type) {
 
@@ -10,7 +11,7 @@ export async function modalHandler (event, type) {
 				this.loader.show()
 				const data = await mdb.getFullData(type, id)
 				console.log(data)
-				MovieCardModal.create(data, type)
+				renderModal(data, type)
 				this.loader.hide()
 		}
 

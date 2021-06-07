@@ -3,7 +3,6 @@ import {Component} from '@/core/component'
 export class NavComponent extends Component {
     constructor(id) {
         super (id)
-        // создал this.tabs, чтобы перезаписать через transferTabs()
         this.tabs = []
     }
 

@@ -7,7 +7,7 @@ export class Card  {
 						const rating = movie.vote_average
 								? `<span class="card__rating">${movie.vote_average.toFixed(1)}</span>`
 								: ''
-						// убрать и оставить movie.title
+
 						const title = movie.title
 								? movie.title
 								: movie.name
@@ -17,7 +17,7 @@ export class Card  {
 									<div class="play-btn">
                 		<i class="fab fa-youtube play"></i>
 									</div>
-								<img class="card__img" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${title}">
+								<img class="card__img" src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${title}">
 								${rating}
 								<p class="card__text">${title}</p>
             </div>
