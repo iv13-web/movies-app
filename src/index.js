@@ -2,11 +2,11 @@ import './styles/index.sass'
 
 import {Component} from "@/core/component"
 import {Catalog} from "@/core/catalog"
-import {WelcomeComponent} from './components/welcome_component'
-import {ThemeComponent} from './components/theme_component'
-import {NavComponent} from './components/nav_component'
-import {AboutComponent} from './components/about_component'
-import {TestComponent} from './components/test_component'
+import {WelcomeComponent} from './components/welcome.component'
+import {ThemeComponent} from './components/theme.component'
+import {NavComponent} from './components/nav.component'
+import {AboutComponent} from './components/about.component'
+import {TestComponent} from './components/test.component'
 import {SearchComponent} from "@/components/search.component";
 
 new WelcomeComponent('welcome')

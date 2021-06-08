@@ -1,46 +1,42 @@
 import {$} from "@/core/dom";
-import {NavComponent} from "@/components/nav_component";
-
+import {NavComponent} from "@/components/nav.component";
+import {openSearch, closeSearch} from "@modules/search.functions";
 
 export class SearchComponent extends NavComponent{
-		constructor(id) {
-			  super(id);
-		}
+	constructor(id) {
+  		super(id);
+	}
 
-		selectTabs(tabs) {
-				super.selectTabs(tabs);
-		}
+	selectTabs(tabs) {
+		super.selectTabs(tabs);
+	}
 
-		prepare() {
-				this.btn = $(document.querySelector('[data-act="search"]'))
-				this.link = $(document.querySelector('[data-name="search"]'))
-				this.form = $(document.querySelector('[data-type="search-form"]'))
+	prepare() {
+		this.container = this.$el.find('.container')
+		this.pagination = this.$el.find('.pagination')
+		this.input = document.getElementById('search-input')
+		this.link = $(document.querySelector('[data-name="search"]'))
+		this.form = $(document.querySelector('[data-type="search-form"]'))
+		this.searchBtn = $(document.querySelector('[data-act="search"]'))
+	}
 
-		}
+	init() {
+		this.searchBtn.on('click', openSearch.bind(this))
+		this.form.on('click', searchHandler.bind(this))
+	}
 
-		init() {
-				this.btn.on('click', btnHandler.bind(this))
-		}
+	onShow() {
+		// createCards
+	}
 
-
-		onShow() {
-				// createCards
-		}
-
-		onHide() {
-		    this.$el.addClass('hidden')
-		}
+	onHide() {
+		this.$el.addClass('hidden')
+	}
 }
 
-async function btnHandler() {
-		[this.$el, this.link].forEach($el => $el.removeClass('hidden'))
-		this.form.addClass('header__search-form_active')
-		const links = document.querySelectorAll('.nav__link')
-		links.forEach(link => link.classList.remove('nav__link_active'))
-		this.link.addClass('nav__link_active')
-		this.tabs.forEach(tab => tab.Component.hide())
-		const activeTab = this.tabs.find(tab => tab.dataAttribute === "search")
-		activeTab.Component.show()
+function searchHandler(event) {
+	const target = $(event.target)
+	if (target.data.act === 'close') {
+		closeSearch.call(this)
+	}
 }
-
-

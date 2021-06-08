@@ -4,7 +4,6 @@ import {$} from "@/core/dom";
 export class NavComponent extends Component {
     constructor(id) {
         super (id)
-
     }
 
     init() {
@@ -12,7 +11,6 @@ export class NavComponent extends Component {
     }
 
     selectTabs(tabs) {
-        // прокинул из index.js, чтобы получить доступ к компонентам
         this.tabs = tabs
         if (localStorage.getItem('lastSelected')) {
             showLastTabAfterReload.call(this)
@@ -33,13 +31,10 @@ function tabsHandler(event) {
         event.target.classList.add('nav__link_active')
         this.tabs.forEach(tab => tab.Component.hide())
         const activeTab = this.tabs.find(tab => tab.dataAttribute === event.target.dataset.name)
-
-        const searchTab = this.tabs.find(tab => tab.dataAttribute === 'search')
-
+        document.querySelector('[data-type="search-form"]').classList.remove('header__search-form_active')
         const activeLink = $(document.querySelector('[data-name="search"]'))
         activeLink.addClass('hidden')
         activeTab.Component.show()
-
     }
 }
 
@@ -58,4 +53,3 @@ function showLastComponentAfterReload() {
     activeTab = activeTab.Component.$el
     activeTab.removeClass('hidden')
 }
-
