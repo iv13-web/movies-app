@@ -16,9 +16,7 @@ export class WelcomeComponent extends Component {
     }
 
     onHide() {
-        const btn = document.querySelector('.welcome__button');
         this.$el.find('.welcome__button').off('click', btnHandler)
-
     }
 }
 

@@ -7,12 +7,13 @@ import {ThemeComponent} from './components/theme_component'
 import {NavComponent} from './components/nav_component'
 import {AboutComponent} from './components/about_component'
 import {TestComponent} from './components/test_component'
+import {SearchComponent} from "@/components/search.component";
 
 new WelcomeComponent('welcome')
 new ThemeComponent('theme-toggler')
 const loader = new Component('loader')
 const nav = new NavComponent('nav')
-
+const search = new SearchComponent('search')
 
 const latest = new Catalog('latest', 'movie/now_playing','movie', loader)
 const popular = new Catalog('popular', 'movie/popular', 'movie', loader)
@@ -23,7 +24,7 @@ const series = new Catalog('series','tv/popular' , 'tv', loader)
 const test = new TestComponent('test')
 const about = new AboutComponent('about')
 
-nav.selectTabs([
+const tabs = [
     {dataAttribute: 'latest', Component: latest},
     {dataAttribute: 'popular', Component: popular},
     {dataAttribute: 'upcoming', Component: upcoming},
@@ -31,7 +32,11 @@ nav.selectTabs([
     {dataAttribute: 'series', Component: series},
     {dataAttribute: 'test', Component: test},
     {dataAttribute: 'about', Component: about},
+    {dataAttribute: 'search', Component: search},
+]
 
-])
+nav.selectTabs([...tabs])
+search.selectTabs([...tabs])
+
 
 

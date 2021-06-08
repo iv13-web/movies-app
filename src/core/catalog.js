@@ -29,4 +29,5 @@ export class Catalog extends Component {
 		onHide() {
 				[this.container, this.pagination].forEach($el => $el.clear())
 		}
+
 }

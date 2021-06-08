@@ -1,6 +1,5 @@
-.page-header 
+.header
   background-color: #f8f8f8
-  height: $header-height
   position: fixed
   top: 0
   width: 100%
@@ -10,9 +9,57 @@
     display: flex
     justify-content: space-between
     align-items: center
+  .logo
+    display: flex
+    align-items: center
+    img
+      width: 3rem
+      margin-right: 6px
+    p
+      font-size: 2.2rem
+      font-weight: 700
 
+  &__right
+    display: flex
+    align-items: center
 
+  .search
+    height: 32px
+    display: flex
+    align-items: center
+    justify-content: center
+    padding-right: 2rem
+    svg
+      pointer-events: none
+      path
+        fill: #c5ced5
 
+  &__search
+    &-form
+      height: 6rem
+      display: flex
+      background-color: #444
+      +absolute-middle-position
+      z-index: -1
+      align-items: center
+      transition: all .2s ease
+      opacity: 0
+      &_active
+        z-index: 1000
+        opacity: 1
+
+    &-input
+      background-color: #444
+      outline: none
+      border: none
+      width: 100%
+      font-size: 16px
+      font-weight: 600
+      color: #ddd
+    &-icon
+      font-size: 20px
+      color: #ddd
+      padding: 1.6rem
 
 .burger
   align-items: center

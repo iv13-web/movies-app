@@ -1,9 +1,10 @@
 import {Component} from '@/core/component'
+import {$} from "@/core/dom";
 
 export class NavComponent extends Component {
     constructor(id) {
         super (id)
-        this.tabs = []
+
     }
 
     init() {
@@ -14,8 +15,8 @@ export class NavComponent extends Component {
         // прокинул из index.js, чтобы получить доступ к компонентам
         this.tabs = tabs
         if (localStorage.getItem('lastSelected')) {
-            setActiveTabAfterReload.call(this)
-            setActiveComponentAfterReload.call(this)
+            showLastTabAfterReload.call(this)
+            showLastComponentAfterReload.call(this)
         }
     }
 }
@@ -23,18 +24,26 @@ export class NavComponent extends Component {
 function tabsHandler(event) {
     if (event.target.classList.contains('nav__link')) {
         event.preventDefault()
-        localStorage.setItem('lastSelected', event.target.dataset.name)
+        if (event.target.dataset.name !== 'search') {
+            localStorage.setItem('lastSelected', event.target.dataset.name)
+        }
         this.$el.findAll('.nav__link').forEach(tab => {
             tab.classList.remove('nav__link_active')
         })
         event.target.classList.add('nav__link_active')
-        this.tabs.forEach( tab => tab.Component.hide())
+        this.tabs.forEach(tab => tab.Component.hide())
         const activeTab = this.tabs.find(tab => tab.dataAttribute === event.target.dataset.name)
+
+        const searchTab = this.tabs.find(tab => tab.dataAttribute === 'search')
+
+        const activeLink = $(document.querySelector('[data-name="search"]'))
+        activeLink.addClass('hidden')
         activeTab.Component.show()
+
     }
 }
 
-function setActiveTabAfterReload() {
+function showLastTabAfterReload() {
     this.$el.findAll('.nav__link').forEach(tab => {
         tab.classList.remove('nav__link_active')
     })
@@ -43,9 +52,10 @@ function setActiveTabAfterReload() {
     acitveTab.classList.add('nav__link_active')
 }
 
-function setActiveComponentAfterReload() {
+function showLastComponentAfterReload() {
     this.tabs.forEach( tab => tab.Component.hide())
     let activeTab = this.tabs.find(tab => tab.dataAttribute === localStorage.getItem('lastSelected'))
     activeTab = activeTab.Component.$el
     activeTab.removeClass('hidden')
 }
+
