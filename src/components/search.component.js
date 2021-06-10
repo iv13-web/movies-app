@@ -1,28 +1,25 @@
 import {$} from "@/core/dom";
-import {NavComponent} from "@/components/nav.component";
-import {openSearch, closeSearch} from "@modules/search.functions";
+import {openSearchForm, closeSearchForm} from "@modules/search.functions";
+import {Component} from "@/core/component";
 
-export class SearchComponent extends NavComponent{
-	constructor(id) {
-  		super(id);
-	}
-
-	selectTabs(tabs) {
-		super.selectTabs(tabs);
+export class SearchComponent extends Component{
+	constructor(id, observer) {
+  		super(id, observer)
 	}
 
 	prepare() {
-		this.container = this.$el.find('.container')
-		this.pagination = this.$el.find('.pagination')
+		super.prepare()
 		this.input = document.getElementById('search-input')
-		this.link = $(document.querySelector('[data-name="search"]'))
 		this.form = $(document.querySelector('[data-type="search-form"]'))
 		this.searchBtn = $(document.querySelector('[data-act="search"]'))
+
+		console.log(this.form)
 	}
 
 	init() {
-		this.searchBtn.on('click', openSearch.bind(this))
-		this.form.on('click', searchHandler.bind(this))
+		[this.searchBtn, this.form].forEach($el => {
+			$el.on('click', searchHandler.bind(this))
+		})
 	}
 
 	onShow() {
@@ -30,13 +27,19 @@ export class SearchComponent extends NavComponent{
 	}
 
 	onHide() {
-		this.$el.addClass('hidden')
+		[this.container, this.pagination].forEach($el => $el.clear())
 	}
 }
 
+// при выносе этой функции в отдельный файл, можно будет сразу вставить внутрь код из openSearchForm и closeSearchForm
 function searchHandler(event) {
 	const target = $(event.target)
+
+	if (target.data.act === 'search') {
+		openSearchForm.call(this)
+	}
+
 	if (target.data.act === 'close') {
-		closeSearch.call(this)
+		closeSearchForm.call(this)
 	}
 }

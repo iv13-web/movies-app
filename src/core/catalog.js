@@ -3,17 +3,11 @@ import {createCards, getPage, switchPages} from "@modules/card.functions";
 import {cardHandler} from "@modules/card.functions";
 
 export class Catalog extends Component {
-
 	constructor(id, url, type, loader) {
 		super(id)
 		this.url = url
 		this.type = type
 		this.loader = loader
-	}
-
-	prepare() {
-		this.container = this.$el.find('.container')
-		this.pagination = this.$el.find('.pagination')
 	}
 
 	init() {
@@ -29,5 +23,4 @@ export class Catalog extends Component {
 	onHide() {
 		[this.container, this.pagination].forEach($el => $el.clear())
 	}
-
 }

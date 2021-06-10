@@ -2,14 +2,18 @@ import {$} from '@/core/dom'
 
 export class Component {
 
-    constructor (id) {
+    constructor (id, observer, tabs) {
         this.$el = $(document.getElementById(id))
         this.id = id
+        this.observer = observer
+        this.tabs = tabs
         this.prepare()
         this.init()
     }
 
     prepare() {
+        this.container = this.$el.find('.container') || null
+        this.pagination = this.$el.find('.pagination') || null
     }
 
     init() {
