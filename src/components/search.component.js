@@ -1,6 +1,6 @@
 import {$} from "@/core/dom";
-import {openSearchForm, closeSearchForm} from "@modules/search.functions";
 import {Component} from "@/core/component";
+import {openSearchForm, closeSearchForm} from "@modules/search.functions";
 
 export class SearchComponent extends Component{
 	constructor(id, observer) {
@@ -12,8 +12,6 @@ export class SearchComponent extends Component{
 		this.input = document.getElementById('search-input')
 		this.form = $(document.querySelector('[data-type="search-form"]'))
 		this.searchBtn = $(document.querySelector('[data-act="search"]'))
-
-		console.log(this.form)
 	}
 
 	init() {

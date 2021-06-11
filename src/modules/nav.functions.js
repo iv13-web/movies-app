@@ -50,7 +50,8 @@ export function closeSearchTab () {
 export function tabsHandler(event) {
 	event.preventDefault()
 	const target = $(event.target)
-	if (target.hasClass('nav__link')) {
+
+	if (target.hasClass('nav__link') && target.noClass('nav__link_active')) {
 		removeActiveLinks.call(this)
 		target.addClass('nav__link_active')
 		localStorage.setItem('lastSelected', target.data.name)

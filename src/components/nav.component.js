@@ -17,9 +17,10 @@ export class NavComponent extends Component {
     }
 
     init() {
-        this.$el.on('click', tabsHandler.bind(this))
         if (localStorage.getItem('lastSelected')) {
             showLastSelected.call(this)
         }
+        this.$el.on('click', tabsHandler.bind(this))
     }
 }
+
