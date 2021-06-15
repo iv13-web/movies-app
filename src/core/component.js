@@ -3,10 +3,11 @@ import {$} from '@/core/dom'
 export class Component {
 
     constructor (id, observer, tabs) {
-        this.$el = $(document.getElementById(id))
         this.id = id
         this.observer = observer
         this.tabs = tabs
+        this.$el = $(document.getElementById(id))
+        this.$root = $(document.getElementById('root'))
         this.prepare()
         this.init()
     }

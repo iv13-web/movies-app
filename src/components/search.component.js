@@ -1,6 +1,6 @@
-import {$} from "@/core/dom";
-import {Component} from "@/core/component";
-import {openSearchForm, closeSearchForm} from "@modules/search.functions";
+import {$} from "@/core/dom"
+import {Component} from "@/core/component"
+import * as search from "@modules/search.functions"
 
 export class SearchComponent extends Component{
 	constructor(id, observer) {
@@ -9,9 +9,9 @@ export class SearchComponent extends Component{
 
 	prepare() {
 		super.prepare()
-		this.input = document.getElementById('search-input')
-		this.form = $(document.querySelector('[data-type="search-form"]'))
-		this.searchBtn = $(document.querySelector('[data-act="search"]'))
+		this.input = this.$root.find('#search-input')
+		this.form = this.$root.find('[data-type="search-form"]')
+		this.searchBtn = this.$root.find('[data-act="search"]')
 	}
 
 	init() {
@@ -34,10 +34,9 @@ function searchHandler(event) {
 	const target = $(event.target)
 
 	if (target.data.act === 'search') {
-		openSearchForm.call(this)
+		search.open.call(this)
 	}
-
 	if (target.data.act === 'close') {
-		closeSearchForm.call(this)
+		search.close.call(this)
 	}
 }

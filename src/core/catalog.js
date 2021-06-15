@@ -3,11 +3,12 @@ import {createCards, getPage, switchPages} from "@modules/card.functions";
 import {cardHandler} from "@modules/card.functions";
 
 export class Catalog extends Component {
-	constructor(id, url, type, loader) {
+
+	constructor(id, options) {
 		super(id)
-		this.url = url
-		this.type = type
-		this.loader = loader
+		this.url = options.url
+		this.type = options.type
+		this.loader = options.loader
 	}
 
 	init() {

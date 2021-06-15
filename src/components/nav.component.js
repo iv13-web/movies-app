@@ -1,7 +1,8 @@
 import {Component} from '@/core/component'
+import {storage} from "@/core/utils";
 import {
-    closeSearchTab,
-    openSearchTab,
+    showSearchTab,
+    hideSearchTab,
     showLastSelected,
     tabsHandler,
 } from "@modules/nav.functions";
@@ -12,15 +13,12 @@ export class NavComponent extends Component {
     }
 
     prepare() {
-        this.observer.subscribe('search:open', openSearchTab.bind(this))
-        this.observer.subscribe('search:close', closeSearchTab.bind(this))
+        this.observer.subscribe('search:open', showSearchTab.bind(this))
+        this.observer.subscribe('search:close', hideSearchTab.bind(this))
     }
 
     init() {
-        if (localStorage.getItem('lastSelected')) {
-            showLastSelected.call(this)
-        }
+        storage('lastSelected') && showLastSelected.call(this)
         this.$el.on('click', tabsHandler.bind(this))
     }
 }
-

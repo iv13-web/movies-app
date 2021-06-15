@@ -19,6 +19,9 @@ class Dom {
 	find(selector) {
 		return $(this.$el.querySelector(selector))
 	}
+	findId(selector) {
+		return this.$el.getElementById(selector)
+	}
 	findAll(selector) {
 		return this.$el.querySelectorAll(selector)
 	}
@@ -55,6 +58,10 @@ class Dom {
 	}
 	remove() {
 		return this.$el.remove();
+	}
+	focus() {
+		this.$el.focus()
+		return this
 	}
 	get data() {
 		return this.$el.dataset

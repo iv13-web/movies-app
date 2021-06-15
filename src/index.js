@@ -15,11 +15,31 @@ new ThemeComponent('theme-toggler')
 const loader = new Component('loader')
 const observer = new Observer()
 const search = new SearchComponent('search', observer)
-const latest = new Catalog('latest', 'movie/now_playing','movie', loader)
-const popular = new Catalog('popular', 'movie/popular', 'movie', loader)
-const upcoming = new Catalog('upcoming','movie/upcoming' , 'movie', loader)
-const topMovies = new Catalog('topMovies','movie/top_rated' , 'movie', loader)
-const series = new Catalog('series','tv/popular' , 'tv', loader)
+
+const latest = new Catalog('latest', {
+    url:'movie/now_playing',
+    type:'movie',
+    loader
+})
+const popular = new Catalog('popular', {
+    url:'movie/popular',
+    type:'movie',
+    loader
+})
+const upcoming = new Catalog('upcoming',{
+    url:'movie/upcoming',
+    type:'movie',
+    loader
+})
+const topMovies = new Catalog('topMovies',{
+    url:'movie/top_rated',
+    type:'movie', loader
+})
+const series = new Catalog('series',{
+    url:'tv/popular',
+    type:'tv',
+    loader
+})
 
 const test = new TestComponent('test')
 const about = new AboutComponent('about')
