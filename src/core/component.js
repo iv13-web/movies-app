@@ -1,5 +1,4 @@
 import {$} from '@/core/dom'
-import {Observer} from "@/core/observer";
 
 export class Component {
 
@@ -13,7 +12,6 @@ export class Component {
         this.prepare()
         this.init()
     }
-
 
     prepare() {
         this.container = this.$el.find('.container') || null

@@ -73,6 +73,11 @@ class Dom {
 		return this.$el.innerText
 	}
 
+	value(data) {
+		if (data !== '') return this.$el.value
+		return this.$el.value = data
+	}
+
 }
 
 export function $(selector) {

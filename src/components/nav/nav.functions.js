@@ -10,7 +10,7 @@ function clearActiveLinks() {
 // использую filter, чтобы не перекликалось с внутренним методом find из dom.js
 export function showLastTab() {
 	clearActiveLinks.call(this)
-	this.tabs.forEach( tab => tab.Component.hide())
+	this.tabs.forEach(tab => tab.Component.hide())
 	try {
 		const lastSelected= storage('lastSelected')
 		const activeLink = this.$el.find(`[data-name="${lastSelected}"]`)
@@ -56,6 +56,7 @@ export function handler(event) {
 		clearActiveLinks.call(this)
 		target.addClass('nav__link_active')
 		storage('lastSelected', target.data.name)
+
 		this.tabs.forEach(tab => tab.Component.hide())
 		const activeTab = this.tabs.filter(tab => tab.name === target.data.name)[0]
 		activeTab.Component.show()

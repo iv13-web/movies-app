@@ -10,5 +10,7 @@ export function close() {
 	this.observer.fire('search:close')
 	this.$el.addClass('hidden')
 	this.form.removeClass('header__search-form_active')
-	this.input.value = ''
+	this.input.value('')
+
+
 }

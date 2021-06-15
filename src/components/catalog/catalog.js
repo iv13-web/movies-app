@@ -12,8 +12,13 @@ export class Catalog extends Component {
 
 	init() {
 		setTimeout(() => this.$el.isVisible() && this.onShow(), 0)
-		this.container.on('click', event => cardHandler.call(this, event, this.type))
-		this.pagination.on('click', event => switchPages.call(this, event, this.url, this.id))
+
+		this.container.on('click', event => {
+			cardHandler.call(this, event, this.type)
+		})
+		this.pagination.on('click', event => {
+			switchPages.call(this, event, this.url, this.id)
+		})
 	}
 
 	onShow() {

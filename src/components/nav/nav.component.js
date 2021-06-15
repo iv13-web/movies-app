@@ -8,7 +8,6 @@ export class NavComponent extends Component {
     }
 
     prepare() {
-        console.log(this.observer)
         this.observer.subscribe('search:open', nav.showSearchTab.bind(this))
         this.observer.subscribe('search:close', nav.hideSearchTab.bind(this))
     }
