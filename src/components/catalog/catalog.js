@@ -1,6 +1,6 @@
 import {Component} from "@/core/component";
-import {createCards, getPage, switchPages} from "@modules/card.functions";
-import {cardHandler} from "@modules/card.functions";
+import {createCards, getPage, switchPages} from "./card.functions";
+import {cardHandler} from "./card.functions";
 
 export class Catalog extends Component {
 
@@ -8,7 +8,6 @@ export class Catalog extends Component {
 		super(id)
 		this.url = options.url
 		this.type = options.type
-		this.loader = options.loader
 	}
 
 	init() {

@@ -1,6 +1,6 @@
 import {$} from "@/core/dom"
 import {Component} from "@/core/component"
-import * as search from "@modules/search.functions"
+import * as search from "./search.functions"
 
 export class SearchComponent extends Component{
 	constructor(id, observer) {
@@ -35,6 +35,7 @@ function searchHandler(event) {
 
 	if (target.data.act === 'search') {
 		search.open.call(this)
+
 	}
 	if (target.data.act === 'close') {
 		search.close.call(this)

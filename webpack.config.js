@@ -76,7 +76,6 @@ module.exports = {
         не писать расширения файлов, которые укажем в массиве */
         extensions: ['.js', '.json'],
         alias: {
-            '@modules': path.resolve(__dirname, 'src/modules'),
             '@': path.resolve(__dirname, 'src'),
             'icons': path.resolve(__dirname, 'src/assets/icons')
         }
@@ -114,10 +113,6 @@ module.exports = {
                 {
                     from: path.resolve(__dirname, 'src/assets/icons'),
                     to: path.resolve(__dirname, 'dist/assets/icons')
-                },
-                {
-                    from: path.resolve(__dirname, 'src/modules'),
-                    to: path.resolve(__dirname, 'dist/modules')
                 },
                 {
                     from: path.resolve(__dirname, 'src/plugins'),

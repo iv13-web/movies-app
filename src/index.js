@@ -1,44 +1,36 @@
 import './styles/index.sass'
 
-import {Component} from "@/core/component"
-import {Catalog} from "@/core/catalog"
-import {WelcomeComponent} from './components/welcome.component'
-import {ThemeComponent} from './components/theme.component'
-import {NavComponent} from './components/nav.component'
-import {AboutComponent} from './components/about.component'
-import {TestComponent} from './components/test.component'
-import {SearchComponent} from "@/components/search.component";
-import {Observer} from "@/core/observer";
+import {Catalog} from "@/components/catalog/catalog"
+import {ThemeComponent} from '@/components/theme/theme.component'
+import {NavComponent} from '@/components/nav/nav.component'
+import {AboutComponent} from '@/components/about.component'
+import {TestComponent} from '@/components/test.component'
+import {SearchComponent} from "@/components/search/search.component"
+import {Observer} from "@/core/observer"
 
-new WelcomeComponent('welcome')
 new ThemeComponent('theme-toggler')
-const loader = new Component('loader')
 const observer = new Observer()
 const search = new SearchComponent('search', observer)
 
 const latest = new Catalog('latest', {
     url:'movie/now_playing',
     type:'movie',
-    loader
 })
 const popular = new Catalog('popular', {
     url:'movie/popular',
     type:'movie',
-    loader
 })
 const upcoming = new Catalog('upcoming',{
     url:'movie/upcoming',
     type:'movie',
-    loader
 })
 const topMovies = new Catalog('topMovies',{
     url:'movie/top_rated',
-    type:'movie', loader
+    type:'movie',
 })
 const series = new Catalog('series',{
     url:'tv/popular',
     type:'tv',
-    loader
 })
 
 const test = new TestComponent('test')
@@ -56,4 +48,3 @@ const tabs = [
 ]
 
 new NavComponent('nav', observer, tabs)
-

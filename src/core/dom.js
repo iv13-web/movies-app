@@ -38,6 +38,9 @@ class Dom {
 			? this.$el.insertAdjacentHTML(where, node)
 			: this.$el.insertAdjacentElement(where, node)
 	}
+	show() {
+		return this.$el.classList.remove('hidden')
+	}
 	hide() {
 		return this.$el.classList.add('hidden')
 	}

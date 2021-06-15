@@ -1,4 +1,5 @@
 import {$} from '@/core/dom'
+import {Observer} from "@/core/observer";
 
 export class Component {
 
@@ -6,11 +7,13 @@ export class Component {
         this.id = id
         this.observer = observer
         this.tabs = tabs
+        this.loader = $(document.getElementById('loader'))
         this.$el = $(document.getElementById(id))
         this.$root = $(document.getElementById('root'))
         this.prepare()
         this.init()
     }
+
 
     prepare() {
         this.container = this.$el.find('.container') || null

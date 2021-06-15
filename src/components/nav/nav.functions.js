@@ -8,7 +8,7 @@ function clearActiveLinks() {
 }
 
 // использую filter, чтобы не перекликалось с внутренним методом find из dom.js
-export function showLastSelected() {
+export function showLastTab() {
 	clearActiveLinks.call(this)
 	this.tabs.forEach( tab => tab.Component.hide())
 	try {
@@ -37,7 +37,7 @@ export function showSearchTab () {
 
 export function hideSearchTab () {
 	clearActiveLinks.call(this)
-	showLastSelected.call(this)
+	showLastTab.call(this)
 	this.$el.find('[data-name="search"]').addClass('hidden')
 	try {
 		const activeTab = this.tabs.filter(tab => tab.name === storage('lastSelected'))[0]
@@ -48,7 +48,7 @@ export function hideSearchTab () {
 	}
 }
 
-export function tabsHandler(event) {
+export function handler(event) {
 	event.preventDefault()
 	const target = $(event.target)
 
