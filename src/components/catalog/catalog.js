@@ -11,8 +11,6 @@ export class Catalog extends Component {
 	}
 
 	init() {
-		setTimeout(() => this.$el.isVisible() && this.onShow(), 0)
-
 		this.container.on('click', event => {
 			cardHandler.call(this, event, this.type)
 		})

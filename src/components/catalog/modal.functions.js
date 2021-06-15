@@ -4,7 +4,6 @@ import {$} from "@/core/dom";
 export function modalHandler(event) {
 		if (event.target.dataset.act === 'close') {
 				document.querySelector('body').classList.remove('stop-scroll')
-				console.log(this)
 				this.remove()
 		}
 }

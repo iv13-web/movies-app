@@ -3,8 +3,8 @@ import {mdb} from "@/services/api.service"
 import {modalHandler, renderModal} from './modal.functions'
 import {storage} from "@/core/utils";
 
-function renderCard(movie) {
-	if (movie.poster_path) {
+export function renderCard(movie) {
+	if (movie.poster_path && movie.overview) {
 		// проверка на отсутствие рейтинга
 		const rating = movie.vote_average
 				? `<span class="card__rating">${movie.vote_average.toFixed(1)}</span>`
@@ -63,7 +63,7 @@ export async function createCards(url, page, id) {
 export async function switchPages(event, url, id) {
 	const target = $(event.target)
 	if (target.hasClass('pagination__link')) {
-		const page = target.innerText
+		const page = target.text
 		this.container.clear()
 		this.pagination.clear()
 		createCards.call(this, url, page, id)

@@ -69,7 +69,7 @@ class Dom {
 	get data() {
 		return this.$el.dataset
 	}
-	get innerText() {
+	get text() {
 		return this.$el.innerText
 	}
 
