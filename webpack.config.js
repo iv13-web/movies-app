@@ -157,15 +157,6 @@ module.exports = {
                 use: cssLoaders('sass-loader')
             },
             {
-                test: /\.less$/i,
-                // use: [
-                //     MiniCssExtractPlugin.loader,
-                //     'css-loader',
-                //     'less-loader',
-                // ],
-                use: cssLoaders('less-loader')
-            },
-            {
                 test: /\.m?js$/,
                 exclude: /node_modules/,
                 use: {

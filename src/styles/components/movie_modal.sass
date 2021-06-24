@@ -5,8 +5,6 @@
   background-color: rgba(0, 0, 0, .8)
   overflow: scroll
 
-
-
   &__additions
     display: flex
     flex-direction: column
@@ -30,10 +28,6 @@
     border-radius: 24px 24px 0 0
     overflow: hidden
 
-
-
-
-
     &-top
       display: flex
       margin-bottom: 3rem
@@ -44,8 +38,7 @@
         width: 17rem
         margin-right: 3rem
     &-bottom
-      padding: 0 1rem
-
+      padding: 0 12px
 
 
   &__heading
@@ -61,17 +54,23 @@
   &__cast
     &-name
       font-size: 14px
+      font-weight: 600
     &-role
-      font-size: 12px
+      font-size: 14px
     &-wrapper
-      min-width: 22rem
+      display: flex
+      flex-direction: column
+      justify-content: center
+      max-width: 14rem
       img
-        height: 18rem
+        height: 20rem
         border-radius: 16px
+        object-fit: cover
 
 .swiper
   &-wrapper
     height: 24rem
+    margin-bottom: 16px
   &-pagination
     position: initial
   &-pagination-bullet-active ,
