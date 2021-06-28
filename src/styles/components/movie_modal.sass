@@ -1,23 +1,19 @@
 .modal
-
   +middle-position(fixed)
   z-index: 999
   background-color: rgba(0, 0, 0, .8)
   overflow: scroll
-
   &__additions
     display: flex
     flex-direction: column
     font-size: 12px
     color: #555
-
     &-title
       font-size: 20px
       font-weight: 700
       margin-bottom: 1em
     &-line
       margin-bottom: 1em
-
   &__window
     z-index: 1000
     position: relative
@@ -27,19 +23,24 @@
     margin-top: 100px
     border-radius: 24px 24px 0 0
     overflow: hidden
-
+    @media (min-width: $maxWidthContainer+px)
+      max-width: 60rem
+      margin: 4rem auto
+      border-radius: 8px
     &-top
       display: flex
       margin-bottom: 3rem
       padding: 50px 12px 0
-
+      @media (min-width: $maxWidthContainer+px)
+        padding: 24px
       & img
         border-radius: 12px
         width: 17rem
         margin-right: 3rem
     &-bottom
       padding: 0 12px
-
+      @media (min-width: $maxWidthContainer+px)
+        padding: 0 24px
 
   &__heading
     font-size: 2rem
@@ -47,10 +48,8 @@
     text-align: left
     margin-bottom: 1rem
     position: relative
-
   &__section
     margin-bottom: 3rem
-
   &__cast
     &-name
       font-size: 14px
@@ -66,7 +65,6 @@
         height: 20rem
         border-radius: 16px
         object-fit: cover
-
 .swiper
   &-wrapper
     height: 24rem

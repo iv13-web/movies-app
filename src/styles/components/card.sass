@@ -1,10 +1,4 @@
 .card
-  display: flex
-  flex-direction: column
-  position: relative
-  width: calc(50% - 10px)
-  margin-bottom: 2.4rem
-
   i
     position: absolute
     right: 8px
@@ -12,7 +6,6 @@
     font-size: 24px
     z-index: 1
     color: #ffcf11
-
     &:after
       position: absolute
       content: ""
@@ -27,15 +20,10 @@
       margin: auto
       border-radius: 5px
       box-shadow: 0 0 5px 3px #8181815e
-
-
-  &:nth-child(2n-1)
-    margin-right: 2rem
-
   &__img
     border-radius: 16px
     margin-bottom: 6px
-    min-height: 25rem
+    min-height: 20rem
     box-shadow: 0 0 6px 4px #b7b7b75e
     object-fit: cover
   &__text

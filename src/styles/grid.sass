@@ -1,7 +1,55 @@
-.container
-  width: 100%
-  padding: 1.2rem
-  display: flex
-  flex-wrap: wrap
+.grid
+  display: grid
+  grid-template-columns: repeat(12, 1fr)
+  grid-column-gap: 12px
+  grid-row-gap: 24px
 
+.col
+  grid-column: span 12
+  &_sm,
+  &_md,
+  &_lg,
+  &_xl
+    &-1, &-2, &-3, &-4, &-5, &-6, &-7, &-8, &-9, &-10, &-11, &-12
+      grid-column: span 12
 
+.col_xs
+  @for $xs from 1 through 12
+    &-#{$xs}
+      grid-column: span $xs
+
+@media (min-width: $res4+px)
+  .col_sm
+    @for $sm from 1 through 12
+      &-#{$sm}
+        grid-column: span $sm
+
+@media (min-width: $res3+px)
+  .col_md
+    @for $md from 1 through 12
+      &-#{$md}
+        grid-column: span $md
+
+@media (min-width: $res3+px)
+  .grid
+    column-gap: 24px
+  .col_lg
+    @for $lg from 1 through 12
+      &-#{$lg}
+        grid-column: span $lg
+
+.dn-sm
+  @media (max-width: $res4+px)
+    display: none
+
+.dn-md
+  @media (max-width: $res3+px)
+    display: none
+
+.dn-lg
+  @media (max-width: $res2+px)
+    display: none
+
+.dn-xl
+  @media (max-width: $res1+px)
+    display: none
