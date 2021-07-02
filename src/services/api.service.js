@@ -42,21 +42,16 @@ class Api {
         }
     }
 
-
-    // TODO refactor to load + add class VideoPlayer
-    async showTrailer(type, id) {
-        // https://www.youtube.com/watch?v=key
+    async fetchTrailer(type, id) {
         try {
             const response = await fetch(this.baseUrl + `${type}/${id}/videos?${this.token}&language=ru`)
             const data = await response.json()
-            const url = `https://www.youtube.com/watch?v=${data.results[0].key}`
-            window.open(url, '_blank')
+            return data.results[0].key
         } catch (e) {
             try{
                 const response = await fetch(this.baseUrl + `${type}/${id}/videos?${this.token}&language=en`)
                 const data = await response.json()
-                const url = `https://www.youtube.com/watch?v=${data.results[0].key}`
-                window.open(url, '_blank')
+                return data.results[0].key
             } catch (e) {
                 alert('К сожалению, трейлер отсутсвует')
             }

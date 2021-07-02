@@ -1,7 +1,7 @@
 .grid
   display: grid
   grid-template-columns: repeat(12, 1fr)
-  grid-column-gap: 12px
+  grid-column-gap: 16px
   grid-row-gap: 24px
 
 .col
@@ -13,10 +13,11 @@
     &-1, &-2, &-3, &-4, &-5, &-6, &-7, &-8, &-9, &-10, &-11, &-12
       grid-column: span 12
 
-.col_xs
-  @for $xs from 1 through 12
-    &-#{$xs}
-      grid-column: span $xs
+@media (max-width: $res4+px)
+  .col_xs
+    @for $xs from 1 through 12
+      &-#{$xs}
+        grid-column: span $xs
 
 @media (min-width: $res4+px)
   .col_sm
@@ -30,7 +31,7 @@
       &-#{$md}
         grid-column: span $md
 
-@media (min-width: $res3+px)
+@media (min-width: $res2+px)
   .grid
     column-gap: 24px
   .col_lg

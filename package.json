@@ -1,43 +1,43 @@
 {
-  "name": "movies",
+  "name": "webpack-config",
   "version": "1.0.0",
-  "description": "interactive movie databse",
-  "private": true,
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --mode development",
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
-    "start": "cross-env NODE_ENV=development webpack serve --mode development --open"
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --inline"
   },
-  "browserslist": "> 0.25%, not dead",
-  "keywords": [
-    "javascript",
-    "webpack"
-  ],
-  "author": "Ivanov Igor",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
+    "@babel/core": "^7.14.6",
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.14.7",
+    "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
-    "copy-webpack-plugin": "^8.1.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^5.2.4",
-    "css-minimizer-webpack-plugin": "^3.0.0",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.3.1",
+    "css-loader": "^5.2.6",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "image-minimizer-webpack-plugin": "^2.2.0",
+    "imagemin-jpegtran": "^7.0.0",
+    "imagemin-optipng": "^8.0.0",
     "mini-css-extract-plugin": "^1.6.0",
-    "sass": "^1.32.13",
-    "sass-loader": "^11.1.0",
-    "style-loader": "^2.0.0",
-    "terser-webpack-plugin": "^5.1.2",
-    "webpack": "^5.37.0",
-    "webpack-cli": "^4.7.0",
+    "npm": "^7.19.0",
+    "postcss-loader": "^6.1.0",
+    "sass": "^1.35.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.0.0",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.12.1",
-    "normalize.css": "^8.0.1"
+    "core-js": "^3.15.1",
+    "regenerator-runtime": "^0.13.7"
   }
 }

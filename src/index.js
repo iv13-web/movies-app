@@ -1,3 +1,5 @@
+import "core-js/stable";
+import "regenerator-runtime/runtime"
 import './styles/index.sass'
 
 import {Catalog} from "@/components/catalog/catalog"

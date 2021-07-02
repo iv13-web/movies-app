@@ -11,7 +11,6 @@ export function modalHandler(event) {
 export function renderModal(data, type) {
 	const body = $(document.querySelector('body'))
 
-
 	const title = type === 'movie'
 		? data.details.title
 		: data.details.name
@@ -28,6 +27,9 @@ export function renderModal(data, type) {
 		? data.details.production_countries[0].iso_3166_1
 		: 'не указана'
 
+	const similar = data.similar.length
+		? data.similar
+		: data.reccommendations
 
 	const modal = document.createElement('div')
 	modal.classList.add('modal')
@@ -45,15 +47,10 @@ export function renderModal(data, type) {
 						<span class="modal__additions-line">Голоса:&nbsp${data.details.vote_count}</span>
 				</div>
 			</div>
-			<div class="buttons-container">
-				<div class="button button_like"><i class="far fa-heart button__icon"></i>Сохранить</div>
-				<div class="button button_seen"><i class="fas fa-eye button__icon"></i>Отметить</div>
-			</div>
-		
 			<div class="modal__window-bottom">
 				<div class="modal__section">
 					<p class="modal__heading">Сюжет</p>
-					<p>${data.details.overview}</p>
+					<p class="modal__plot">${data.details.overview}</p>
 				</div>
 				<div class="modal__section">
 					<p class="modal__heading">Актеры</p>
@@ -70,7 +67,7 @@ export function renderModal(data, type) {
 				<div class="modal__section">
 					<div class="swiper-container similar__slider">
 						<div class="swiper-wrapper">
-							${similarSlides(data.similar)}
+							${similarSlides(similar, type)}
 						</div>
 						<div class="swiper-pagination"></div>
 					</div>
@@ -84,7 +81,7 @@ export function renderModal(data, type) {
 
 	new Swiper('.actors__slider', {
 		slidesPerView: 1,
-		spaceBetween: 12,
+		spaceBetween: 24,
 		pagination: {
 				el: '.swiper-pagination',
 				clickable: true,
@@ -94,36 +91,50 @@ export function renderModal(data, type) {
 				slidesPerView: 2
 			},
 			448:{
-				slidesPerView: 3
+				slidesPerView: 3,
 			},
-			768:{
+			991:{
 				slidesPerView: 4
 			},
 		}
 	})
 	new Swiper('.similar__slider', {
-		slidesPerView: 2,
-		spaceBetween: 12,
+		slidesPerView: 1,
+		spaceBetween: 24,
 		pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
+			el: '.swiper-pagination',
+			clickable: true,
 		},
+		breakpoints: {
+			320:{
+				slidesPerView: 2
+			},
+			448:{
+				slidesPerView: 3,
+			},
+			991:{
+				slidesPerView: 4
+			},
+		}
 	})
 
-	return modal
+	return $(modal)
 }
 
 function actorSlides(array) {
 	let html = ''
-	if (array.length > 10) array = array.slice(0, 11)
+	if (array.length > 10) array = array.slice(0, 10)
 	array.forEach(person => {
+		const character = person.character.length > 20
+			? person.character.split('').slice(0,21).concat('...').join('')
+			: person.character
 		if (person.profile_path !== null) {
 			html += `
 				<div class="swiper-slide">
 					<div class="modal__cast-wrapper">
 						<img src="https://image.tmdb.org/t/p/w500${person.profile_path}" alt="">
 						<p class="modal__cast-name">${person.name}</p>
-						<p class="modal__cast-role">${person.character}</p>
+						<p class="modal__cast-role">${character}</p>
 					</div>
 				</div>
 			`
@@ -134,14 +145,20 @@ function actorSlides(array) {
 
 function similarSlides(array, type) {
 	let html = ''
-	if (array.length > 10) array = array.slice(0, 11)
+	if (array.length > 10) array = array.slice(0, 10)
 	array.forEach(movie => {
+		const format = type === 'movie'
+			? movie.title
+			: movie.name
+		const title = format.length > 20
+			? format.split('').slice(0,21).concat('...').join('')
+			: format
 		if (movie.poster_path) {
 			html += `
 				<div class="swiper-slide">
 					<div class="modal__cast-wrapper">
 						<img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" data-id="${movie.id}" alt="">
-						<p class="modal__movie-title">${movie.title}</p>
+						<p class="modal__movie-title">${title}</p>
 					</div>
 				</div>
 			`

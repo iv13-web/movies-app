@@ -5,11 +5,12 @@
   width: 100%
   z-index: 200
   padding: 10px 0
-  // min-height: 40px
+  transition: background-color .3s ease
   .container
     display: flex
     justify-content: space-between
     align-items: center
+    flex-wrap: nowrap
   .logo
     display: flex
     align-items: center
@@ -19,7 +20,6 @@
     p
       font-size: 2.2rem
       font-weight: 700
-
   &__right
     display: flex
     align-items: center
@@ -34,57 +34,30 @@
       pointer-events: none
       path
         fill: #c5ced5
-
   &__search
     &-form
-      height: 6rem
-      display: flex
       background-color: #444
       +absolute-middle-position
       z-index: -1
-      align-items: center
       transition: all .2s ease
       opacity: 0
       &_active
         z-index: 1000
         opacity: 1
-
     &-input
+      margin-right: auto
+      padding-left: 12px
       background-color: #444
       outline: none
       border: none
-      width: 100%
       font-size: 16px
       font-weight: 600
       color: #ddd
+      min-width: 10rem
     &-icon
       font-size: 20px
       color: #ddd
-      padding: 1.6rem
-
-.burger
-  align-items: center
-  position: relative
-  width: 3.2rem
-  height: 3.2rem
-  transition: all .3s ease
-
-  &:before,
-  &:after
-    background-color: #000
-    content: ''
-    height: 2px
-    position: absolute
-    top: 10px
-    transition: all .3s ease
-    width: 2.2rem
-  &:after
-    top: 18px
-  &_active
-    transform: translateX(8px)
-    &:before
-      transform: rotate(45deg) translateY(6px)
-      width: 2.4rem
-    &:after
-      transform: rotate(-45deg) translateY(-6px)
-      width: 2.4rem
+      &:first-child
+        padding: 1.6rem 1.6rem 1.6rem 0
+      &:last-child
+        padding: 1.6rem 0 1.6rem 1.6rem

@@ -1,0 +1,25 @@
+.trailer-modal
+  position: fixed
+  top: 0
+  right: 0
+  left: 0
+  bottom: 0
+  margin: auto
+  z-index: 999
+  background-color: rgba(0, 0, 0, .8)
+  overflow: scroll
+  &__window
+    z-index: 1000
+    position: absolute
+    bottom: 0
+    top: 0
+    left: 0
+    right: 0
+    margin: auto
+    width: 100%
+    max-width: 138rem
+    padding: 0 20px
+    +adaptive-value('max-height',800,300,1)
+  #player
+    box-shadow: 0 0 6px 2px #ffcf1138
+    border-radius: 10px

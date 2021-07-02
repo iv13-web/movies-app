@@ -14,15 +14,17 @@
 <body>
     <div id="root">
 
+
         <header class="header" >
             <form class="header__search-form " data-type="search-form">
-                <i class="fas fa-search header__search-icon"></i>
-                <input autofocus autocomplete="off" type="text" class="header__search-input" id="search-input">
-                <i class="fas fa-times header__search-icon" data-act="close"></i>
+                <div class="container">
+                    <i class="fas fa-search header__search-icon"></i>
+                    <input autofocus autocomplete="off" type="text" class="header__search-input" id="search-input">
+                    <i class="fas fa-times header__search-icon" data-act="close"></i>
+                </div>
             </form>
             <div class="container">
                 <div class="header__left">
-    <!--                <div class="burger"></div>-->
                     <div class="logo">
                         <img src="./assets/icons/logo.svg" alt="">
                         <p>movies</p>
@@ -242,8 +244,9 @@
         </div>
     </div>
 
-    <script src="./plugins/pagination.js"></script>
+    <script src="plugins/pagination.js"></script>
     <script src="./plugins/swiper-bundle.min.js"></script>
+    <script src="https://www.youtube.com/player_api"></script>
     <script src="https://kit.fontawesome.com/97780d887f.js" crossorigin="anonymous"></script>
 </body>
 </html>

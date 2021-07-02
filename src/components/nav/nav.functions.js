@@ -41,10 +41,10 @@ export function hideSearchTab () {
 	this.$el.find('[data-name="search"]').addClass('hidden')
 	try {
 		const activeTab = this.tabs.filter(tab => tab.name === storage('lastSelected'))[0]
-		activeTab.Component.show()
+		activeTab.Component.container.clear()
 	} catch (e) {
 		const activeTab = this.tabs.filter(tab => tab.name === 'latest')[0]
-		activeTab.Component.show()
+		activeTab.Component.container.clear()
 	}
 }
 

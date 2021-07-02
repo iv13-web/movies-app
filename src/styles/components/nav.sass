@@ -1,11 +1,13 @@
 .nav
   display: flex
   overflow-x: scroll
-  padding: 1.6rem 0 1.6rem 1.6rem
-  margin: 0 -1.6rem
+  +adaptive-value('padding-top',22,18,1)
+  +adaptive-value('padding-bottom',22,18,1)
+  +adaptive-value('padding-left',22,16,1)
+  margin: 0 -16px
   -webkit-overflow-scrolling: touch
-  @media (min-width: $res1+px)
-    overflow: auto
+  @media (min-width: $res3+px)
+    overflow-x: auto
     padding-left: 0
     margin: 0
 

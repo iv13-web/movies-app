@@ -1,16 +1,23 @@
 .card
+  position: relative
   i
     position: absolute
     right: 8px
     top: 2px
     font-size: 24px
     z-index: 1
-    color: #ffcf11
+    color: #d9d9d9
+    @media (any-hover: hover)
+      &:hover
+        cursor: pointer
+        color: #fff
+        &:after
+          background: #8700ff
     &:after
       position: absolute
       content: ""
-      height: 16px
-      width: 24px
+      height: 12px
+      width: 12px
       background: black
       top: 0
       right: 0
@@ -20,12 +27,16 @@
       margin: auto
       border-radius: 5px
       box-shadow: 0 0 5px 3px #8181815e
+      transition: all .3s ease
   &__img
     border-radius: 16px
     margin-bottom: 6px
     min-height: 20rem
     box-shadow: 0 0 6px 4px #b7b7b75e
     object-fit: cover
+    @media (any-hover: hover)
+      &:hover
+        cursor: pointer
   &__text
     color: #1b1d1d
     font-size: 14px
