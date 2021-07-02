@@ -15,7 +15,7 @@ export function createPlayerModal(url) {
 	new YT.Player('player', {
 		height: '100%',
 		width: '100%',
-		videoId: `${url}`
+		videoId: `${url}`,
 	})
 	return $(modal)
 }
