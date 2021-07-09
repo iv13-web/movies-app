@@ -1,6 +1,7 @@
 import {Component} from "@/core/component";
-import {createCards, getPage, switchPages} from "./card.functions";
-import {cardHandler} from "./card.functions";
+import {createCards, getPage, switchPages} from "./card/card.functions";
+import {cardHandler} from "./card/card.functions";
+import {createTemplate} from "@/components/catalog/catalog.functions";
 
 export class Catalog extends Component {
 
@@ -8,6 +9,16 @@ export class Catalog extends Component {
 		super(id)
 		this.url = options.url
 		this.type = options.type
+	}
+
+	get template() {
+		return createTemplate(this.id)
+	}
+
+	prepare() {
+		this.$el.insert(this.template, 'beforeend')
+		this.container = this.$el.find('.container')
+		this.pagination = this.$el.find('.pagination')
 	}
 
 	init() {

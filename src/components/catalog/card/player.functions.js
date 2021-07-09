@@ -1,7 +1,6 @@
 import {$} from "@/core/dom";
 
 export function createPlayerModal(url) {
-	const body = $(document.body)
 	const modal = document.createElement('div')
 	modal.classList.add('trailer-modal')
 	modal.setAttribute('data-act', 'close' )
@@ -11,7 +10,7 @@ export function createPlayerModal(url) {
 		</div>
 	`)
 	this.$root.insert(modal, 'beforeend')
-	body.addClass('stop-scroll')
+	document.body.classList.add('stop-scroll')
 	new YT.Player('player', {
 		height: '100%',
 		width: '100%',

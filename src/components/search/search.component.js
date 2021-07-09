@@ -1,15 +1,21 @@
 import {$} from "@/core/dom"
 import {Component} from "@/core/component"
-import {cardHandler} from "@/components/catalog/card.functions"
+import {cardHandler} from "@/components/catalog/card/card.functions"
 import {searchHandler, showResults} from "./search.functions";
+import {createTemplate} from "@/components/catalog/catalog.functions";
 
 export class SearchComponent extends Component{
 	constructor(id, observer) {
   		super(id, observer)
 	}
+	get template() {
+		return createTemplate(this.id)
+	}
 
 	prepare() {
-		super.prepare()
+		this.$el.insert(this.template, 'beforeend')
+		this.container = this.$el.find('.container')
+		this.pagination = this.$el.find('.pagination')
 		this.input = this.$root.find('#search-input')
 		this.form = this.$root.find('[data-type="search-form"]')
 		this.searchBtn = this.$root.find('[data-act="search"]')

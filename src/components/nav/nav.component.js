@@ -1,5 +1,4 @@
 import {Component} from '@/core/component'
-import {storage} from "@/core/utils"
 import * as nav from './nav.functions'
 
 export class NavComponent extends Component {
@@ -13,7 +12,7 @@ export class NavComponent extends Component {
     }
 
     init() {
-        storage('lastSelected') && nav.showLastTab.call(this)
+        nav.showLastTab.call(this)
         this.$el.on('click', nav.handler.bind(this))
     }
 }

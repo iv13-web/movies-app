@@ -88,7 +88,6 @@ class Api {
         return data
     }
 
-    // search/movie?api_key=9adffccf59c02bd0dc729c1d92ccd822&language=ru&query=%D0%B4%D0%B6%D0%B5%D0%BD&page=1&include_adult=false
     async search(query, page = 1) {
         try {
             const response = await fetch(this.baseUrl + `search/movie?${this.token}&language=ru&query=${query}&page=${page}&include_adult=false`)

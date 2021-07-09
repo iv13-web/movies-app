@@ -1,8 +1,8 @@
-import {storage} from "@/core/utils";
+import {storage} from "@/core/helpers";
 
 export function themeHandler() {
 	this.$el.toggle('toggler_active')
-	this.page.toggle('dark-theme')
+	document.body.classList.toggle('dark-theme')
 
 	storage('themePrefered') === 'dark'
 		? storage('themePrefered', 'light')
@@ -12,6 +12,6 @@ export function themeHandler() {
 export function setThemeAfterReload() {
 	if (storage('themePrefered') === 'dark' ) {
 		this.$el.addClass('toggler_active')
-		this.page.addClass('dark-theme')
+		document.body.classList.add('dark-theme')
 	}
 }

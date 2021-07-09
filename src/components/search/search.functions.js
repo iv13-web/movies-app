@@ -1,6 +1,6 @@
 import {$} from "@/core/dom";
 import {mdb} from "@/services/api.service";
-import {renderCard} from "@/components/catalog/card.functions";
+import {renderCard} from "@/components/catalog/card/card.template";
 
 export function searchHandler(event) {
 	const target = $(event.target)
@@ -20,9 +20,8 @@ export function searchHandler(event) {
 }
 
 export async function showResults(event, page = 1) {
-	event.preventDefault()
-	this.container.clear()
-	this.pagination.clear()
+	event.preventDefault();
+	[this.container, this.pagination].forEach(el => el.clear())
 	this.loader.show()
 	const query = this.input.value()
 	const data = await mdb.search(query, page)

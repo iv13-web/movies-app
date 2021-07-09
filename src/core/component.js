@@ -1,7 +1,6 @@
 import {$} from '@/core/dom'
 
 export class Component {
-
     constructor (id, observer, tabs) {
         this.id = id
         this.observer = observer
@@ -14,8 +13,6 @@ export class Component {
     }
 
     prepare() {
-        this.container = this.$el.find('.container') || null
-        this.pagination = this.$el.find('.pagination') || null
     }
 
     init() {
