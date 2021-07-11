@@ -34,11 +34,11 @@ const series = new Catalog('series',{
     type:'tv',
 })
 const tabs = [
+    {id: 'search', Component: search, title: 'Результаты поиска'},
     {id: 'latest', Component: latest, title: 'Новинки'},
     {id: 'popular', Component: popular, title: 'Популярные'},
     {id: 'upcoming', Component: upcoming, title: 'В прокате'},
     {id: 'best', Component: best, title: 'Топ-фильмы'},
     {id: 'series', Component: series, title: 'Сериалы'},
-    {id: 'search', Component: search},
 ]
 new NavComponent('nav', observer, tabs)
